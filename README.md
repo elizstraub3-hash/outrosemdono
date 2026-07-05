@@ -1,9 +1,11 @@
-# Outro Sem Dono · Cartão de Visita Virtual
+# Brook'Saints Boutique · Cartão de Visita Virtual
 
-Cartão de visita virtual da loja, em uma única página (`index.html`), com:
+Cartão de visita virtual da loja de sapatos, em uma única página (`index.html`), com:
 
-- 🪝 **Logo** (ícone de cabide — pode ser trocado pela sua imagem)
-- 📸 **Instagram** (@outrosemdono)
+- 👠 **Logo** da Brook'Saints Boutique (`logo.png`)
+- 💋 **Fundo** com a estampa de beijos da marca (`fundo.jpg`)
+- 💬 **WhatsApp Vendas** — (41) 9 9889-4516
+- 📸 **Instagram** — @boutique_brookssaintss e @brookssaints_shoes
 - 📍 **Como chegar na loja** (botão que abre o Google Maps)
 - 📦 **Opção de retirada na loja**
 - 🕘 **Horário de funcionamento**
@@ -12,10 +14,16 @@ Cartão de visita virtual da loja, em uma única página (`index.html`), com:
 
 Abra o arquivo `index.html` e procure pelos comentários `EDITE AQUI`:
 
-1. **Endereço**: troque `Rua Exemplo, 123 - Centro` no link do Google Maps e no texto do botão pelo endereço real da loja.
+1. **Endereço**: troque `Rua Exemplo, 123 - Curitiba PR` no link do Google Maps e no texto do botão pelo endereço real da loja.
 2. **Horários**: ajuste a tabela de horário de funcionamento.
-3. **Logo**: se tiver uma imagem de logo, salve como `logo.png` na raiz do projeto e substitua o `<svg>` dentro da `<div class="logo">` por `<img src="logo.png" alt="Logo">`.
-4. **Instagram**: se o @ da loja for diferente de `@outrosemdono`, atualize o link e os textos.
+
+## Imagens
+
+- `logo.png` — logo da boutique (fundo transparente)
+- `fundo.jpg` — estampa de beijos usada como plano de fundo da página
+
+As duas foram otimizadas para web a partir dos arquivos originais enviados
+(versões em alta resolução ficam guardadas no histórico do repositório).
 
 ## Como publicar (GitHub Pages)
 
