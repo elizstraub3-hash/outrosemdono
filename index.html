@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outro Sem Dono · Cartão de Visita</title>
+<meta name="description" content="Cartão de visita virtual da Outro Sem Dono — Instagram, como chegar, retirada na loja e horário de funcionamento.">
+<style>
+  :root{
+    --bg1:#1a1423;
+    --bg2:#372549;
+    --card:#ffffff;
+    --ink:#2b2333;
+    --muted:#7a7185;
+    --accent:#b75d69;
+    --accent-2:#eacdc2;
+    --ok:#2e7d5b;
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+    background:radial-gradient(1200px 800px at 20% -10%, var(--bg2), var(--bg1));
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px 16px;
+    color:var(--ink);
+  }
+  .card{
+    width:100%;
+    max-width:420px;
+    background:var(--card);
+    border-radius:28px;
+    box-shadow:0 24px 60px rgba(0,0,0,.45);
+    overflow:hidden;
+  }
+  /* ===== Cabeçalho / Logo ===== */
+  .header{
+    background:linear-gradient(135deg, var(--bg2), var(--accent));
+    padding:38px 24px 56px;
+    text-align:center;
+    position:relative;
+  }
+  .logo{
+    width:96px;height:96px;
+    margin:0 auto;
+    background:var(--card);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.3);
+    position:absolute;
+    left:50%;bottom:-48px;
+    transform:translateX(-50%);
+  }
+  .logo svg{width:56px;height:56px}
+  .brand{
+    color:#fff;
+    font-size:1.55rem;
+    font-weight:700;
+    letter-spacing:.5px;
+  }
+  .tagline{
+    color:rgba(255,255,255,.85);
+    font-size:.9rem;
+    margin-top:6px;
+  }
+  .body{padding:64px 24px 28px;text-align:center}
+  .handle{
+    color:var(--muted);
+    font-size:.95rem;
+    margin-bottom:22px;
+  }
+  /* ===== Botões de ação ===== */
+  .actions{display:flex;flex-direction:column;gap:12px}
+  .btn{
+    display:flex;align-items:center;gap:14px;
+    padding:15px 18px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-weight:600;
+    font-size:1rem;
+    color:var(--ink);
+    background:#f6f2f7;
+    border:1px solid #eee6ef;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:active{transform:scale(.98)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
+  .btn .icon{
+    width:44px;height:44px;flex:none;
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .btn .icon svg{width:24px;height:24px}
+  .btn .txt{text-align:left;line-height:1.25}
+  .btn .txt small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+  .btn-insta .icon{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
+  .btn-mapa  .icon{background:#2f6fed;color:#fff}
+  /* ===== Blocos de informação ===== */
+  .info{
+    margin-top:22px;
+    text-align:left;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .info-box{
+    background:#faf7fb;
+    border:1px solid #eee6ef;
+    border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .info-box h3{
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    color:var(--accent);
+    display:flex;align-items:center;gap:8px;
+    margin-bottom:10px;
+  }
+  .info-box h3 svg{width:16px;height:16px;flex:none}
+  .pill{
+    display:inline-block;
+    background:rgba(46,125,91,.1);
+    color:var(--ok);
+    font-size:.8rem;
+    font-weight:600;
+    padding:4px 12px;
+    border-radius:999px;
+    margin-bottom:8px;
+  }
+  .info-box p{font-size:.92rem;color:var(--ink);line-height:1.5}
+  .hours{width:100%;border-collapse:collapse;font-size:.92rem}
+  .hours td{padding:5px 0;border-bottom:1px dashed #e8dfea}
+  .hours tr:last-child td{border-bottom:none}
+  .hours td:last-child{text-align:right;font-weight:600}
+  .closed{color:var(--accent);font-weight:600}
+  .footer{
+    text-align:center;
+    padding:0 24px 26px;
+    color:var(--muted);
+    font-size:.78rem;
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+
+    <!-- ===== LOGO + NOME DA LOJA ===== -->
+    <header class="header">
+      <h1 class="brand">Outro Sem Dono</h1>
+      <p class="tagline">Peças únicas esperando por um novo dono ✨</p>
+      <div class="logo" aria-hidden="true">
+        <!-- Logo (cabide) — troque por <img src="logo.png" alt="Logo"> se tiver a imagem -->
+        <svg viewBox="0 0 64 64" fill="none" stroke="#b75d69" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 14a5 5 0 1 1 5-5"/>
+          <path d="M32 14v6"/>
+          <path d="M32 20 8 38a4 4 0 0 0 2.4 7.2h43.2A4 4 0 0 0 56 38L32 20z"/>
+        </svg>
+      </div>
+    </header>
+
+    <div class="body">
+      <p class="handle">@outrosemdono</p>
+
+      <!-- ===== BOTÕES ===== -->
+      <nav class="actions">
+
+        <!-- Instagram -->
+        <a class="btn btn-insta" href="https://instagram.com/outrosemdono" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4.5"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
+          <span class="txt">Siga no Instagram<small>@outrosemdono</small></span>
+        </a>
+
+        <!-- Como chegar na loja -->
+        <!-- EDITE AQUI: troque o endereço dentro do link e no texto abaixo -->
+        <a class="btn btn-mapa" href="https://www.google.com/maps/search/?api=1&query=Rua+Exemplo,+123+-+Centro" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+          </span>
+          <span class="txt">Como chegar na loja<small>Rua Exemplo, 123 – Centro</small></span>
+        </a>
+
+      </nav>
+
+      <div class="info">
+
+        <!-- ===== OPÇÃO DE RETIRADA ===== -->
+        <section class="info-box">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/>
+            </svg>
+            Retirada na loja
+          </h3>
+          <span class="pill">✓ Disponível</span>
+          <p>Compre pelo Instagram e retire sua peça direto na loja, sem custo de envio. É só combinar o horário com a gente pelo direct! 💬</p>
+        </section>
+
+        <!-- ===== HORÁRIO DE FUNCIONAMENTO ===== -->
+        <!-- EDITE AQUI: ajuste os horários conforme a loja -->
+        <section class="info-box">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+            </svg>
+            Horário de funcionamento
+          </h3>
+          <table class="hours">
+            <tr><td>Segunda a sexta</td><td>09h – 18h</td></tr>
+            <tr><td>Sábado</td><td>09h – 13h</td></tr>
+            <tr><td>Domingo</td><td class="closed">Fechado</td></tr>
+          </table>
+        </section>
+
+      </div>
+    </div>
+
+    <footer class="footer">
+      Outro Sem Dono · Cartão de visita virtual
+    </footer>
+
+  </main>
+</body>
+</html>
