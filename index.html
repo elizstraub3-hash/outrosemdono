@@ -3,253 +3,222 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brook'Saints Boutique · Loja de Sapatos</title>
-<meta name="description" content="Brook'Saints Boutique — Botas, saltos e sandálias. Estilo para todos os momentos. WhatsApp, Instagram, como chegar, retirada na loja e horários.">
+<title>Brook'Saints Boutique</title>
+<meta name="description" content="Brook'Saints Boutique — Botas, saltos e sandálias. Estilo para todos os momentos.">
 <style>
   :root{
-    --pink:#e50d77;
-    --pink-dark:#b00a5c;
-    --pink-soft:#ffe2ef;
-    --black:#0a080a;
+    --rose:#e84c92;          /* rosa mais escuro (acento / borda) */
+    --rose-deep:#c93c7c;     /* variação para hover */
+    --rose-light:#fbe4ee;    /* rosa claro (fundos suaves) */
+    --rose-line:#f4d3e2;     /* rosa claro para bordas dos cards */
+    --ink:#3a2a33;           /* texto principal */
+    --muted:#b06f8d;         /* texto secundário em rosa acinzentado */
     --card:#ffffff;
-    --ink:#231a20;
-    --muted:#8a7580;
-    --ok:#2e7d5b;
-    --radius:18px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{
     font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
-    background:var(--black) url('fundo.jpg') center/420px repeat;
+    background:#fbdce9 url('fundo.jpg') center/480px repeat;
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:24px 16px;
+    padding:40px 18px;
     color:var(--ink);
-    position:relative;
-  }
-  body::before{ /* suaviza a estampa do fundo */
-    content:'';
-    position:fixed;inset:0;
-    background:rgba(10,8,10,.45);
-    pointer-events:none;
+    -webkit-font-smoothing:antialiased;
   }
   .card{
     width:100%;
-    max-width:420px;
+    max-width:430px;
     background:var(--card);
-    border-radius:28px;
-    box-shadow:0 24px 60px rgba(0,0,0,.55);
-    overflow:hidden;
-    position:relative;
-    z-index:1;
+    border:1.5px solid var(--rose);
+    border-radius:34px;
+    box-shadow:0 30px 70px rgba(200, 70, 130, .28);
+    padding:40px 32px 34px;
   }
-  /* ===== Cabeçalho / Logo ===== */
-  .header{
-    background:linear-gradient(150deg, #1a1216 30%, var(--pink));
-    padding:30px 24px 0;
-    text-align:center;
-  }
-  .header .logo{
-    width:min(280px, 80%);
+
+  /* ===== LOGO ===== */
+  .logo{
     display:block;
-    margin:0 auto -34px;
-    filter:drop-shadow(0 12px 24px rgba(0,0,0,.45));
-    transform:translateY(30px);
+    width:78%;
+    margin:0 auto 26px;
   }
-  .body{padding:64px 24px 28px;text-align:center}
-  .headline{
-    font-size:1.05rem;
+
+  /* ===== SEÇÃO 1 · LOJA DE SAPATOS ===== */
+  .shoes{ text-align:center; }
+  .shoes .title{
+    font-size:1.02rem;
     font-weight:700;
+    letter-spacing:2.5px;
+    color:var(--rose);
+    text-transform:uppercase;
+  }
+  .shoes .cats{
+    margin-top:14px;
+    font-size:1.12rem;
+    font-weight:600;
     letter-spacing:1px;
-    text-transform:uppercase;
-    color:var(--pink);
-  }
-  .subline{
-    margin-top:6px;
-    font-weight:600;
     color:var(--ink);
   }
-  .tagline{
-    margin-top:4px;
-    margin-bottom:22px;
-    font-size:.9rem;
+  .shoes .mood{
+    margin-top:8px;
+    font-size:.92rem;
+    letter-spacing:.5px;
     color:var(--muted);
   }
-  /* ===== Botões de ação ===== */
-  .actions{display:flex;flex-direction:column;gap:12px}
-  .btn{
-    display:flex;align-items:center;gap:14px;
-    padding:15px 18px;
-    border-radius:var(--radius);
+  .shoes .ig{
+    margin-top:20px;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
     text-decoration:none;
-    font-weight:600;
-    font-size:1rem;
     color:var(--ink);
-    background:#faf4f7;
-    border:1px solid #f3e2ea;
-    transition:transform .15s ease, box-shadow .15s ease;
   }
-  .btn:active{transform:scale(.98)}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
-  .btn .icon{
-    width:44px;height:44px;flex:none;
-    border-radius:12px;
+  .shoes .ig .glyph{
+    width:38px;height:38px;flex:none;
+    border-radius:11px;
+    background:var(--rose-light);
     display:flex;align-items:center;justify-content:center;
-    color:#fff;
+    color:var(--rose);
   }
-  .btn .icon svg{width:24px;height:24px}
-  .btn .txt{text-align:left;line-height:1.25}
-  .btn .txt small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
-  .btn-zap   .icon{background:#25d366}
-  .btn-insta .icon{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
-  .btn-mapa  .icon{background:var(--pink)}
-  /* ===== Blocos de informação ===== */
-  .info{
-    margin-top:22px;
-    text-align:left;
-    display:flex;flex-direction:column;gap:12px;
+  .shoes .ig .glyph svg{width:21px;height:21px}
+  .shoes .ig .who{ text-align:left; line-height:1.25; }
+  .shoes .ig .who b{ font-weight:600; font-size:.95rem; }
+  .shoes .ig .who span{ display:block; font-size:.85rem; color:var(--muted); }
+
+  /* ===== DIVISOR ===== */
+  .divider{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    margin:28px 4px;
   }
-  .info-box{
-    background:#fdf6fa;
-    border:1px solid #f3e2ea;
-    border-radius:var(--radius);
-    padding:16px 18px;
+  .divider .line{ height:1px; flex:1; background:var(--rose-line); }
+  .divider .dot{
+    width:7px;height:7px;
+    background:var(--rose);
+    transform:rotate(45deg);
+    border-radius:1px;
   }
-  .info-box h3{
-    font-size:.8rem;
-    text-transform:uppercase;
-    letter-spacing:1.2px;
-    color:var(--pink);
-    display:flex;align-items:center;gap:8px;
-    margin-bottom:10px;
+
+  /* ===== SEÇÃO 2 · CONTATOS ===== */
+  .contacts{ display:flex; flex-direction:column; gap:12px; }
+  .contact{
+    display:flex; align-items:center; gap:15px;
+    padding:15px 18px;
+    border:1px solid var(--rose-line);
+    border-radius:18px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
   }
-  .info-box h3 svg{width:16px;height:16px;flex:none}
-  .pill{
-    display:inline-block;
-    background:rgba(46,125,91,.1);
-    color:var(--ok);
-    font-size:.8rem;
-    font-weight:600;
-    padding:4px 12px;
-    border-radius:999px;
-    margin-bottom:8px;
+  .contact:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 24px rgba(232, 76, 146, .16);
+    border-color:var(--rose);
   }
-  .info-box p{font-size:.92rem;color:var(--ink);line-height:1.5}
-  .hours{width:100%;border-collapse:collapse;font-size:.92rem}
-  .hours td{padding:5px 0;border-bottom:1px dashed #f0dce7}
-  .hours tr:last-child td{border-bottom:none}
-  .hours td:last-child{text-align:right;font-weight:600}
-  .closed{color:var(--pink);font-weight:600}
-  .footer{
-    text-align:center;
-    padding:0 24px 26px;
-    color:var(--muted);
-    font-size:.78rem;
+  .contact .glyph{
+    width:46px;height:46px;flex:none;
+    border-radius:13px;
+    background:var(--rose-light);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--rose);
   }
+  .contact .glyph svg{width:24px;height:24px}
+  .contact .info{ line-height:1.3; }
+  .contact .info b{ font-weight:600; font-size:1rem; display:block; }
+  .contact .info span{ font-size:.88rem; color:var(--muted); }
 </style>
 </head>
 <body>
   <main class="card">
 
     <!-- ===== LOGO ===== -->
-    <header class="header">
-      <img class="logo" src="logo.png" alt="Brook'Saints Boutique">
-    </header>
+    <img class="logo" src="logo.png" alt="Brook'Saints Boutique">
 
-    <div class="body">
-      <p class="headline">Conheça nossa loja de sapatos!</p>
-      <p class="subline">Botas • Saltos • Sandálias</p>
-      <p class="tagline">Estilo para todos os momentos ✨</p>
+    <!-- ===== SEÇÃO 1 · LOJA DE SAPATOS ===== -->
+    <section class="shoes">
+      <p class="title">Conheça nossa loja de sapatos</p>
+      <p class="cats">Botas &nbsp;•&nbsp; Saltos &nbsp;•&nbsp; Sandálias</p>
+      <p class="mood">Estilo para todos os momentos</p>
 
-      <!-- ===== BOTÕES ===== -->
-      <nav class="actions">
+      <a class="ig" href="https://instagram.com/brooksaints_shoes" target="_blank" rel="noopener">
+        <span class="glyph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5.5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="who">
+          <b>Instagram Shoes</b>
+          <span>@brooksaints_shoes</span>
+        </span>
+      </a>
+    </section>
 
-        <!-- WhatsApp Vendas -->
-        <a class="btn btn-zap" href="https://wa.me/5541998894516?text=Ol%C3%A1!%20Vi%20o%20cart%C3%A3o%20da%20Brook'Saints%20e%20quero%20saber%20mais%20%F0%9F%91%A0" target="_blank" rel="noopener">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.16-1.32A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.06.78.8-2.98-.2-.31A8.2 8.2 0 1 1 12 20.2zm4.5-6.13c-.25-.12-1.46-.72-1.68-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.97-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.37-1.7-.14-.24-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.2.88 2.37 1 2.53.12.17 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.52.59.18 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28z"/>
-            </svg>
-          </span>
-          <span class="txt">WhatsApp · Vendas<small>(41) 9 9889-4516</small></span>
-        </a>
+    <!-- ===== DIVISOR ===== -->
+    <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
 
-        <!-- Instagram Boutique -->
-        <a class="btn btn-insta" href="https://instagram.com/boutique_brookssaintss" target="_blank" rel="noopener">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5"/>
-              <circle cx="12" cy="12" r="4.5"/>
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-            </svg>
-          </span>
-          <span class="txt">Instagram · Boutique<small>@boutique_brookssaintss</small></span>
-        </a>
+    <!-- ===== SEÇÃO 2 · CONTATOS ===== -->
+    <section class="contacts">
 
-        <!-- Instagram Shoes -->
-        <a class="btn btn-insta" href="https://instagram.com/brookssaints_shoes" target="_blank" rel="noopener">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5"/>
-              <circle cx="12" cy="12" r="4.5"/>
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-            </svg>
-          </span>
-          <span class="txt">Instagram · Shoes<small>@brookssaints_shoes</small></span>
-        </a>
+      <!-- WhatsApp -->
+      <a class="contact" href="https://wa.me/5541998894516" target="_blank" rel="noopener">
+        <span class="glyph">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.16-1.32A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.06.78.8-2.98-.2-.31A8.2 8.2 0 1 1 12 20.2zm4.5-6.13c-.25-.12-1.46-.72-1.68-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.97-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.37-1.7-.14-.24-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.2.88 2.37 1 2.53.12.17 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.52.59.18 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28z"/>
+          </svg>
+        </span>
+        <span class="info">
+          <b>WhatsApp</b>
+          <span>(41) 9 9889-4516</span>
+        </span>
+      </a>
 
-        <!-- Como chegar na loja -->
-        <!-- EDITE AQUI: troque o endereço dentro do link e no texto abaixo -->
-        <a class="btn btn-mapa" href="https://www.google.com/maps/search/?api=1&query=Rua+Exemplo,+123+-+Curitiba+PR" target="_blank" rel="noopener">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/>
-              <circle cx="12" cy="10" r="2.5"/>
-            </svg>
-          </span>
-          <span class="txt">Como chegar na loja<small>Rua Exemplo, 123 – Curitiba/PR</small></span>
-        </a>
+      <!-- Grupo de Promoções -->
+      <!-- EDITE AQUI: cole o link de convite do grupo (chat.whatsapp.com/...) -->
+      <a class="contact" href="https://chat.whatsapp.com/COLOQUE_O_LINK_DO_GRUPO" target="_blank" rel="noopener">
+        <span class="glyph">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.16-1.32A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.06.78.8-2.98-.2-.31A8.2 8.2 0 1 1 12 20.2zm4.5-6.13c-.25-.12-1.46-.72-1.68-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.97-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.37-1.7-.14-.24-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.2.88 2.37 1 2.53.12.17 1.73 2.64 4.2 3.7.58.25 1.04.4 1.4.52.59.18 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28z"/>
+          </svg>
+        </span>
+        <span class="info">
+          <b>Grupo de Promoções</b>
+          <span>Entre para receber ofertas exclusivas</span>
+        </span>
+      </a>
 
-      </nav>
+      <!-- Instagram Boutique -->
+      <a class="contact" href="https://instagram.com/boutique_brooksaints" target="_blank" rel="noopener">
+        <span class="glyph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5.5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="info">
+          <b>Instagram Boutique</b>
+          <span>@boutique_brooksaints</span>
+        </span>
+      </a>
 
-      <div class="info">
+      <!-- Localização -->
+      <!-- EDITE AQUI: troque pelo endereço real da loja -->
+      <a class="contact" href="https://www.google.com/maps/search/?api=1&query=Brook+Saints+Boutique" target="_blank" rel="noopener">
+        <span class="glyph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/>
+            <circle cx="12" cy="10" r="2.5"/>
+          </svg>
+        </span>
+        <span class="info">
+          <b>Localização</b>
+          <span>Google Maps · Clique para abrir</span>
+        </span>
+      </a>
 
-        <!-- ===== OPÇÃO DE RETIRADA ===== -->
-        <section class="info-box">
-          <h3>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/>
-            </svg>
-            Retirada na loja
-          </h3>
-          <span class="pill">✓ Disponível</span>
-          <p>Compre pelo WhatsApp ou Instagram e retire seu pedido direto na loja, sem custo de envio. É só combinar o horário com a gente! 💬</p>
-        </section>
-
-        <!-- ===== HORÁRIO DE FUNCIONAMENTO ===== -->
-        <!-- EDITE AQUI: ajuste os horários conforme a loja -->
-        <section class="info-box">
-          <h3>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
-            </svg>
-            Horário de funcionamento
-          </h3>
-          <table class="hours">
-            <tr><td>Segunda a sexta</td><td>09h – 18h</td></tr>
-            <tr><td>Sábado</td><td>09h – 13h</td></tr>
-            <tr><td>Domingo</td><td class="closed">Fechado</td></tr>
-          </table>
-        </section>
-
-      </div>
-    </div>
-
-    <footer class="footer">
-      Brook'Saints Boutique · Botas, saltos e sandálias 👠
-    </footer>
+    </section>
 
   </main>
 </body>
