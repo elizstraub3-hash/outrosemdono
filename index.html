@@ -45,12 +45,18 @@
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
   }
-  .card{
+  .wrap{
     position:relative;
     z-index:2;
+    margin:auto;                       /* centraliza com segurança no mobile */
     width:100%;
     max-width:360px;
-    margin:auto;                       /* centraliza com segurança no mobile */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .card{
+    width:100%;
     background:#fff4f9;                 /* branco com um rosinha bem claro */
     border:1.5px solid var(--rose);
     border-radius:30px;
@@ -291,17 +297,18 @@
 
   /* ===== RODAPÉ ===== */
   .made{
-    margin-top:26px;
+    margin:14px 6px 0;
     text-align:center;
-    font-size:.74rem;
+    font-size:.64rem;
     letter-spacing:.3px;
-    line-height:1.7;
-    color:var(--muted);
+    line-height:1.6;
+    color:#a85888;
+    text-shadow:0 1px 2px rgba(255,255,255,.65);
   }
   .made a{
     color:var(--rose);
     text-decoration:none;
-    font-weight:600;
+    font-weight:700;
     white-space:nowrap;
   }
   .made a:hover{ text-decoration:underline; }
@@ -333,6 +340,7 @@
     <svg class="kiss"><use href="#heart"/></svg>
   </div>
 
+  <div class="wrap">
   <main class="card">
 
     <!-- ===== LETREIRO · LIVES ===== -->
@@ -467,13 +475,15 @@
       </a>
     </section>
 
-    <!-- ===== RODAPÉ ===== -->
-    <p class="made">
-      Este mini site foi criado por Elizandra Straub<br>
-      <a href="https://wa.me/5541996767706?text=Oi%2C%20Elizandra!%20Vi%20o%20mini%20site%20da%20Brook'Saints%20Boutique%20e%20quero%20fazer%20um%20igual." target="_blank" rel="noopener">Quero um mini site assim · (41) 9 9676-7706</a>
-    </p>
-
   </main>
+
+  <!-- ===== RODAPÉ (fora do card) ===== -->
+  <p class="made">
+    Este mini site foi criado por Elizandra Straub<br>
+    <a href="https://wa.me/5541996767706?text=Oi%2C%20Elizandra!%20Vi%20o%20mini%20site%20da%20Brook'Saints%20Boutique%20e%20quero%20fazer%20um%20igual." target="_blank" rel="noopener">Quero um mini site assim · (41) 9 9676-7706</a>
+  </p>
+
+  </div>
 
   <!-- ===== MODAL · POLÍTICA DE TROCA ===== -->
   <div class="modal" id="politica" onclick="if(event.target===this)this.classList.remove('open')">
