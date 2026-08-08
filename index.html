@@ -299,6 +299,75 @@
     transform:rotate(45deg); border-radius:1px;
   }
 
+  /* ===== POP-UP ANIVERSÁRIO ===== */
+  .promo{
+    position:fixed; inset:0; z-index:60;
+    display:none; align-items:center; justify-content:center;
+    padding:24px 18px;
+    background:rgba(90,20,55,.55);
+    backdrop-filter:blur(4px);
+  }
+  .promo.open{ display:flex; animation:promoFade .3s ease; }
+  @keyframes promoFade{ from{opacity:0} to{opacity:1} }
+  .promo-card{
+    position:relative;
+    width:100%; max-width:340px;
+    text-align:center;
+    padding:36px 26px 30px;
+    border-radius:28px;
+    background:linear-gradient(160deg,#ff9ac7 0%,#e84c92 55%,#c22a72 100%);
+    box-shadow:0 30px 70px rgba(120,20,60,.5);
+    color:#fff;
+    overflow:hidden;
+    animation:promoPop .45s cubic-bezier(.2,.9,.3,1.35);
+  }
+  @keyframes promoPop{ from{transform:scale(.8); opacity:0} to{transform:scale(1); opacity:1} }
+  .promo-close{
+    position:absolute; top:12px; right:12px;
+    width:34px; height:34px; border:none; border-radius:50%;
+    background:rgba(255,255,255,.28); color:#fff;
+    font-size:1.25rem; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    z-index:2;
+  }
+  .promo-close:hover{ background:rgba(255,255,255,.45); }
+  .promo-badge{
+    position:relative; z-index:2;
+    width:120px; height:120px; margin:4px auto 16px;
+    border-radius:50%;
+    background:#fff;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px rgba(0,0,0,.22);
+  }
+  .promo-badge b{ font-size:3rem; font-weight:800; line-height:.9; color:var(--rose); }
+  .promo-badge span{ font-size:.78rem; letter-spacing:3px; text-transform:uppercase; font-weight:700; color:var(--rose); }
+  .promo-card h2{
+    position:relative; z-index:2;
+    font-size:1.12rem; font-weight:700; letter-spacing:1px;
+    text-transform:uppercase; line-height:1.35; margin-bottom:10px;
+  }
+  .promo-card p{
+    position:relative; z-index:2;
+    font-size:.92rem; line-height:1.55;
+    color:rgba(255,255,255,.94); margin-bottom:20px;
+  }
+  .promo-btn{
+    position:relative; z-index:2;
+    display:inline-block;
+    background:#fff; color:var(--rose);
+    font-weight:700; font-size:.95rem; text-decoration:none;
+    padding:13px 30px; border-radius:14px;
+    box-shadow:0 8px 18px rgba(0,0,0,.2);
+    transition:transform .16s ease;
+  }
+  .promo-btn:hover{ transform:translateY(-2px); }
+  /* confetes de coração */
+  .promo-card .conf{ position:absolute; z-index:1; opacity:.9; }
+  .promo-card .conf svg{ width:100%; height:100%; display:block; }
+  @media (prefers-reduced-motion:reduce){
+    .promo.open{ animation:none } .promo-card{ animation:none }
+  }
+
   /* ===== RODAPÉ ===== */
   .made{
     margin:14px 6px 0;
@@ -325,6 +394,24 @@
 </style>
 </head>
 <body>
+
+  <!-- ===== POP-UP · ANIVERSÁRIO 2 ANOS ===== -->
+  <div class="promo open" id="promo" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="promo-card">
+      <button class="promo-close" type="button" aria-label="Fechar" onclick="document.getElementById('promo').classList.remove('open')">&times;</button>
+
+      <!-- confetes de coração -->
+      <span class="conf" style="top:16px;left:18px;width:22px;height:22px;transform:rotate(-18deg)"><svg viewBox="0 0 24 24"><path fill="#ffffff" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+      <span class="conf" style="top:30px;right:22px;width:30px;height:30px;transform:rotate(20deg)"><svg viewBox="0 0 24 24"><path fill="#ffd0e6" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+      <span class="conf" style="bottom:70px;left:14px;width:26px;height:26px;transform:rotate(12deg)"><svg viewBox="0 0 24 24"><path fill="#ffd0e6" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+      <span class="conf" style="bottom:80px;right:16px;width:20px;height:20px;transform:rotate(-14deg)"><svg viewBox="0 0 24 24"><path fill="#ffffff" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+
+      <div class="promo-badge"><b>2</b><span>anos</span></div>
+      <h2>Aniversário Brook'Saints Boutique</h2>
+      <p>Estamos comemorando 2 anos de moda, estilo e carinho com você! Vem aproveitar as promoções especiais desta festa.</p>
+      <a class="promo-btn" href="https://chat.whatsapp.com/LHPjqKoCbRx32lAzPnlnnB?s=cl&p=i&ilr=0" target="_blank" rel="noopener">Quero as promoções</a>
+    </div>
+  </div>
 
   <!-- ===== BEIJOS VOANDO ===== -->
   <div class="kisses" aria-hidden="true">
