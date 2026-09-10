@@ -141,6 +141,8 @@
   .prod .info{ padding:10px 12px 12px; display:flex; flex-direction:column; gap:7px; flex:1; }
   .prod .nome{ font-weight:600; font-size:.85rem; line-height:1.25; color:var(--ink); }
   .prod .preco{ font-weight:800; font-size:1.02rem; color:var(--rose-deep); }
+  .preco small, .item .p small{ font-size:.6rem; font-weight:600; color:var(--muted); }
+  .total .px{ font-size:.72rem; color:var(--muted); font-weight:600; }
   .prod .add{
     margin-top:auto; border:none; cursor:pointer;
     background:var(--rose); color:#fff; font-weight:700; font-size:.8rem;
@@ -339,7 +341,7 @@
         <label class="opt sel"><input type="radio" name="frete" value="Retirada na loja" checked onchange="selFrete(this)"> Retirada na loja</label>
         <label class="opt"><input type="radio" name="frete" value="Entrega via Uber (frete a combinar)" onchange="selFrete(this)"> Entrega via Uber (frete a combinar)</label>
       </div>
-      <div class="total"><span>Total</span><b id="total">R$ 0,00</b></div>
+      <div class="total"><span>Total <span class="px">no Pix</span></span><b id="total">R$ 0,00</b></div>
       <button class="finish" id="finish" onclick="finalizar()" disabled>
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.16-1.32A10 10 0 1 0 12 2z"/></svg>
         Finalizar no WhatsApp
@@ -412,13 +414,13 @@ function ph(txt, tom){ // gera uma foto-placeholder rosa (trocar por fotos reais
   return 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
 }
 var PRODUTOS = [
-  { id:'p1', nome:'Conjunto Calça Jeans Hello Kitty + Body Vermelho', preco:189.90, cat:'Reta',
+  { id:'p1', nome:'Conjunto Calça Jeans Hello Kitty + Body Vermelho', preco:199.90, cat:'Reta',
     fotos:['/loja/fotos/kitty-1.jpg','/loja/fotos/kitty-2.jpg'] },
   { id:'p2', nome:'Conjunto Calça Jeans Wide Leg + Top Strass', preco:219.90, cat:'Wide Leg',
     fotos:['/loja/fotos/wide-1.jpg','/loja/fotos/wide-2.jpg','/loja/fotos/wide-3.jpg'] },
-  { id:'p3', nome:'Conjunto Calça Cargo Jeans + Body Rosa', preco:199.90, cat:'Cargo',
+  { id:'p3', nome:'Conjunto Calça Cargo Jeans + Body Rosa Bebê', preco:199.90, cat:'Cargo',
     fotos:['/loja/fotos/cargo-1.jpg','/loja/fotos/cargo-2.jpg'] },
-  { id:'p4', nome:'Conjunto Jeans (jaqueta cropped + calça cargo)', preco:259.90, cat:'Cargo',
+  { id:'p4', nome:'Conjunto Jeans (jaqueta cropped + calça cargo)', preco:249.90, cat:'Cargo',
     fotos:['/loja/fotos/conjunto-1.jpg','/loja/fotos/conjunto-2.jpg','/loja/fotos/conjunto-3.jpg','/loja/fotos/conjunto-4.jpg'] },
 ];
 
@@ -453,7 +455,7 @@ function renderGrid(){
     var navs = p.fotos.length>1 ? '<button class="nav prev" onclick="slide(\''+p.id+'\',-1)" aria-label="Anterior">‹</button><button class="nav next" onclick="slide(\''+p.id+'\',1)" aria-label="Próxima">›</button>' : '';
     return '<div class="prod" data-id="'+p.id+'" data-idx="0">'+
       '<div class="gallery">'+imgs+navs+dots+'</div>'+
-      '<div class="info"><div class="nome">'+p.nome+'</div><div class="preco">'+money(p.preco)+'</div>'+
+      '<div class="info"><div class="nome">'+p.nome+'</div><div class="preco">'+money(p.preco)+' <small>no Pix</small></div>'+
       '<button class="add" onclick="add(\''+p.id+'\',this)">Adicionar ao carrinho</button></div></div>';
   }).join('');
 }
@@ -486,7 +488,7 @@ function renderItems(){
   else{
     box.innerHTML = keys.map(function(k){ var p=prodById(k);
       return '<div class="item"><img src="'+p.fotos[0]+'" alt=""><div class="d">'+
-        '<div class="n">'+p.nome+'</div><div class="p">'+money(p.preco)+'</div>'+
+        '<div class="n">'+p.nome+'</div><div class="p">'+money(p.preco)+' <small>no Pix</small></div>'+
         '<div class="qty"><button onclick="chg(\''+k+'\',-1)">–</button><span>'+cart[k]+'</span>'+
         '<button onclick="chg(\''+k+'\',1)">+</button><button class="rm" onclick="chg(\''+k+'\',-999)">remover</button></div>'+
         '</div></div>';
@@ -506,7 +508,7 @@ function finalizar(){
   if(!keys.length) return;
   var linhas = keys.map(function(k){ var p=prodById(k); return '• '+cart[k]+'x '+p.nome+' — '+money(p.preco*cart[k]); });
   var msg = 'Olá, Brook\'Saints! Quero fazer um pedido:\n\n'+linhas.join('\n')+
-            '\n\nTotal: '+money(totalValor())+
+            '\n\nTotal: '+money(totalValor())+' (no Pix)'+
             '\nEntrega: '+frete;
   window.open('https://wa.me/'+WHATS+'?text='+encodeURIComponent(msg), '_blank');
 }
