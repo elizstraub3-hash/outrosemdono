@@ -61,27 +61,70 @@
     border-radius:26px; padding:22px 20px 18px; text-align:center;
     box-shadow:0 20px 50px rgba(200,70,130,.22);
   }
-  .hero img{ width:min(230px,66%); display:block; margin:0 auto 6px; }
-  .hero p{ font-size:.9rem; letter-spacing:2px; text-transform:uppercase; color:var(--rose); font-weight:700; }
+  .hero img{ width:min(200px,58%); display:block; margin:0 auto 4px; }
+  .hero p{ font-size:.85rem; letter-spacing:2px; text-transform:uppercase; color:var(--rose); font-weight:700; }
+
+  /* ===== Slideshow do cabeçalho ===== */
+  .slider{ position:relative; z-index:2; max-width:900px; margin:12px auto 0; padding:0 12px; }
+  .slider .track{
+    position:relative; border-radius:22px; overflow:hidden;
+    border:1.5px solid var(--rose); box-shadow:0 16px 40px rgba(200,70,130,.25);
+    height:360px;
+  }
+  @media (min-width:640px){ .slider .track{ height:440px; } }
+  .slider .slide{ position:absolute; inset:0; opacity:0; transition:opacity .7s ease; }
+  .slider .slide.on{ opacity:1; }
+  .slider .slide img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
+  .slider .cap{
+    position:absolute; left:0; right:0; bottom:0; padding:26px 18px 16px; color:#fff;
+    background:linear-gradient(transparent, rgba(150,25,80,.8));
+  }
+  .slider .cap b{ display:block; font-size:1.2rem; font-weight:800; letter-spacing:.3px; }
+  .slider .cap span{ font-size:.9rem; opacity:.95; }
+  .slider .dots{ position:absolute; top:12px; right:14px; display:flex; gap:6px; z-index:2; }
+  .slider .dots i{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.55); cursor:pointer; }
+  .slider .dots i.on{ background:#fff; }
+  .slider .arw{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+    width:38px; height:38px; border:none; border-radius:50%; cursor:pointer;
+    background:rgba(255,255,255,.85); color:var(--rose); font-size:1.3rem; line-height:1;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,.2);
+  }
+  .slider .arw.l{ left:20px; } .slider .arw.r{ right:20px; }
+
+  /* ===== Botões de categoria ===== */
+  .cats{
+    position:relative; z-index:2; max-width:960px; margin:16px auto 0;
+    display:flex; gap:8px; overflow-x:auto; padding:2px 12px 4px;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  .cats::-webkit-scrollbar{ display:none; }
+  .cats button{
+    white-space:nowrap; cursor:pointer; font-family:inherit; font-weight:700; font-size:.85rem;
+    border:1px solid var(--rose-line); background:#fff; color:var(--rose);
+    padding:9px 18px; border-radius:999px; transition:all .15s ease;
+  }
+  .cats button.on{ background:var(--rose); color:#fff; border-color:var(--rose); box-shadow:0 6px 14px rgba(232,76,146,.3); }
 
   /* ===== Grade de produtos ===== */
   .grid{
     position:relative; z-index:2;
-    max-width:820px; margin:16px auto 0;
+    max-width:960px; margin:12px auto 0;
     padding:0 12px;
-    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+    display:grid; grid-template-columns:repeat(2,1fr); gap:10px;
   }
-  @media (max-width:520px){ .grid{ grid-template-columns:1fr; } }
+  @media (min-width:640px){ .grid{ grid-template-columns:repeat(3,1fr); gap:14px; } }
+  @media (min-width:920px){ .grid{ grid-template-columns:repeat(4,1fr); } }
   .prod{
     background:var(--card); border:1px solid var(--rose-line);
-    border-radius:20px; overflow:hidden; display:flex; flex-direction:column;
-    box-shadow:0 10px 26px rgba(200,70,130,.12);
+    border-radius:16px; overflow:hidden; display:flex; flex-direction:column;
+    box-shadow:0 8px 20px rgba(200,70,130,.12);
   }
-  .gallery{ position:relative; background:var(--rose-light); aspect-ratio:1/1; }
+  .gallery{ position:relative; background:var(--rose-light); aspect-ratio:3/4; }
   .gallery img{ width:100%; height:100%; object-fit:cover; display:block; }
   .gallery .nav{
     position:absolute; top:50%; transform:translateY(-50%);
-    width:34px; height:34px; border:none; border-radius:50%;
+    width:30px; height:30px; border:none; border-radius:50%;
     background:rgba(255,255,255,.85); color:var(--rose); cursor:pointer;
     font-size:1.1rem; line-height:1; display:flex; align-items:center; justify-content:center;
     box-shadow:0 2px 8px rgba(0,0,0,.15);
@@ -95,13 +138,13 @@
     width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.6);
   }
   .gallery .dots i.on{ background:#fff; }
-  .prod .info{ padding:12px 14px 14px; display:flex; flex-direction:column; gap:8px; flex:1; }
-  .prod .nome{ font-weight:600; font-size:.98rem; line-height:1.25; color:var(--ink); }
-  .prod .preco{ font-weight:800; font-size:1.15rem; color:var(--rose-deep); }
+  .prod .info{ padding:10px 12px 12px; display:flex; flex-direction:column; gap:7px; flex:1; }
+  .prod .nome{ font-weight:600; font-size:.85rem; line-height:1.25; color:var(--ink); }
+  .prod .preco{ font-weight:800; font-size:1.02rem; color:var(--rose-deep); }
   .prod .add{
     margin-top:auto; border:none; cursor:pointer;
-    background:var(--rose); color:#fff; font-weight:700; font-size:.9rem;
-    padding:11px 12px; border-radius:12px; font-family:inherit;
+    background:var(--rose); color:#fff; font-weight:700; font-size:.8rem;
+    padding:9px 10px; border-radius:10px; font-family:inherit;
     transition:transform .15s ease;
   }
   .prod .add:hover{ transform:translateY(-2px); }
@@ -240,6 +283,21 @@
     <p>Loja de roupas</p>
   </div>
 
+  <!-- ===== Slideshow ===== -->
+  <div class="slider">
+    <div class="track" id="track">
+      <div class="slide on"><img src="/loja/fotos/wide-1.jpg" alt=""><div class="cap"><b>Novidades em Jeans</b><span>Conjuntos com muito brilho ✨</span></div></div>
+      <div class="slide"><img src="/loja/fotos/conjunto-1.jpg" alt=""><div class="cap"><b>Conjuntos com estilo</b><span>Calça jeans + body</span></div></div>
+      <div class="slide"><img src="/loja/fotos/kitty-1.jpg" alt=""><div class="cap"><b>Aniversário 2 anos</b><span>Aproveite as promoções</span></div></div>
+      <button class="arw l" onclick="slideHero(-1)" aria-label="Anterior">‹</button>
+      <button class="arw r" onclick="slideHero(1)" aria-label="Próxima">›</button>
+      <div class="dots" id="sdots"></div>
+    </div>
+  </div>
+
+  <!-- ===== Categorias ===== -->
+  <div class="cats" id="cats"></div>
+
   <!-- ===== Produtos ===== -->
   <div class="grid" id="grid"></div>
 
@@ -354,13 +412,13 @@ function ph(txt, tom){ // gera uma foto-placeholder rosa (trocar por fotos reais
   return 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
 }
 var PRODUTOS = [
-  { id:'p1', nome:'Conjunto Calça Jeans Hello Kitty + Body Vermelho', preco:189.90,
+  { id:'p1', nome:'Conjunto Calça Jeans Hello Kitty + Body Vermelho', preco:189.90, cat:'Reta',
     fotos:['/loja/fotos/kitty-1.jpg','/loja/fotos/kitty-2.jpg'] },
-  { id:'p2', nome:'Conjunto Calça Jeans Wide Leg + Top Strass', preco:219.90,
+  { id:'p2', nome:'Conjunto Calça Jeans Wide Leg + Top Strass', preco:219.90, cat:'Wide Leg',
     fotos:['/loja/fotos/wide-1.jpg','/loja/fotos/wide-2.jpg','/loja/fotos/wide-3.jpg'] },
-  { id:'p3', nome:'Conjunto Calça Cargo Jeans + Body Rosa', preco:199.90,
+  { id:'p3', nome:'Conjunto Calça Cargo Jeans + Body Rosa', preco:199.90, cat:'Cargo',
     fotos:['/loja/fotos/cargo-1.jpg','/loja/fotos/cargo-2.jpg'] },
-  { id:'p4', nome:'Conjunto Jeans (jaqueta cropped + calça cargo)', preco:259.90,
+  { id:'p4', nome:'Conjunto Jeans (jaqueta cropped + calça cargo)', preco:259.90, cat:'Cargo',
     fotos:['/loja/fotos/conjunto-1.jpg','/loja/fotos/conjunto-2.jpg','/loja/fotos/conjunto-3.jpg','/loja/fotos/conjunto-4.jpg'] },
 ];
 
@@ -374,10 +432,22 @@ function salvar(){ try{ localStorage.setItem('bs_cart', JSON.stringify(cart)); }
 function money(v){ return 'R$ '+v.toFixed(2).replace('.',','); }
 function prodById(id){ return PRODUTOS.find(function(p){return p.id===id;}); }
 
+/* ===== Categorias ===== */
+var catAtiva = 'Todos';
+function renderCats(){
+  var cats = ['Todos'];
+  PRODUTOS.forEach(function(p){ if(p.cat && cats.indexOf(p.cat)<0) cats.push(p.cat); });
+  document.getElementById('cats').innerHTML = cats.map(function(c){
+    return '<button class="'+(c===catAtiva?'on':'')+'" onclick="filtrar(this,\''+c.replace(/'/g,"\\'")+'\')">'+c+'</button>';
+  }).join('');
+}
+function filtrar(btn, c){ catAtiva=c; renderCats(); renderGrid(); }
+
 /* ===== Render dos produtos ===== */
 function renderGrid(){
+  var lista = PRODUTOS.filter(function(p){ return catAtiva==='Todos' || p.cat===catAtiva; });
   var g = document.getElementById('grid');
-  g.innerHTML = PRODUTOS.map(function(p){
+  g.innerHTML = lista.map(function(p){
     var imgs = p.fotos.map(function(f,i){ return '<img src="'+f+'" alt="'+p.nome+'" data-i="'+i+'" '+(i===0?'':'hidden')+'>'; }).join('');
     var dots = p.fotos.length>1 ? '<div class="dots">'+p.fotos.map(function(_,i){return '<i class="'+(i===0?'on':'')+'"></i>';}).join('')+'</div>' : '';
     var navs = p.fotos.length>1 ? '<button class="nav prev" onclick="slide(\''+p.id+'\',-1)" aria-label="Anterior">‹</button><button class="nav next" onclick="slide(\''+p.id+'\',1)" aria-label="Próxima">›</button>' : '';
@@ -445,7 +515,25 @@ function finalizar(){
 function openModal(id){ document.getElementById(id).classList.add('open'); }
 function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 
-renderGrid(); updateBadge();
+/* ===== Slideshow ===== */
+var sIdx=0, sTimer=null, sSlides, sDots;
+function initSlider(){
+  sSlides = document.querySelectorAll('#track .slide');
+  var dc = document.getElementById('sdots');
+  dc.innerHTML = Array.prototype.map.call(sSlides, function(_,i){ return '<i class="'+(i===0?'on':'')+'" onclick="goSlide('+i+')"></i>'; }).join('');
+  sDots = dc.querySelectorAll('i');
+  autoSlide();
+}
+function showSlide(i){
+  sIdx = (i+sSlides.length)%sSlides.length;
+  Array.prototype.forEach.call(sSlides, function(s,k){ s.classList.toggle('on', k===sIdx); });
+  Array.prototype.forEach.call(sDots, function(d,k){ d.classList.toggle('on', k===sIdx); });
+}
+function slideHero(d){ showSlide(sIdx+d); autoSlide(); }
+function goSlide(i){ showSlide(i); autoSlide(); }
+function autoSlide(){ clearInterval(sTimer); sTimer=setInterval(function(){ showSlide(sIdx+1); }, 4500); }
+
+renderCats(); renderGrid(); updateBadge(); initSlider();
 </script>
 </body>
 </html>
