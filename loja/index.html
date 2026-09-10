@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brook'Saints Boutique · Loja</title>
+<meta name="description" content="Loja Brook'Saints Boutique — roupas com estilo. Compre pelo carrinho e finalize no WhatsApp.">
+
+<!-- Ícone da aba -->
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Prévia ao compartilhar -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Brook'Saints Boutique">
+<meta property="og:title" content="Brook'Saints Boutique · Loja">
+<meta property="og:description" content="Roupas com estilo. Compre pelo carrinho e finalize no WhatsApp.">
+<meta property="og:url" content="https://www.brookssaints.com.br/loja">
+<meta property="og:image" content="https://www.brookssaints.com.br/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.brookssaints.com.br/og.jpg">
+<style>
+  :root{
+    --rose:#e84c92;
+    --rose-deep:#c93c7c;
+    --rose-light:#fbe4ee;
+    --rose-line:#f4d3e2;
+    --ink:#c01a6b;
+    --muted:#b06f8d;
+    --card:#ffffff;
+    --ok:#2e7d5b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+    background:#fbdce9 url('/fundo.jpg') center/480px repeat;
+    min-height:100vh;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:90px;
+  }
+  a{color:inherit}
+
+  /* ===== Cabeçalho ===== */
+  .topbar{
+    position:relative; z-index:2;
+    max-width:820px; margin:0 auto;
+    padding:18px 16px 8px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .topbar .back{
+    text-decoration:none; font-size:.82rem; font-weight:600;
+    color:var(--rose); background:#fff; border:1px solid var(--rose-line);
+    padding:8px 14px; border-radius:12px; white-space:nowrap;
+  }
+  .topbar .back:hover{ background:var(--rose-light); }
+  .hero{
+    position:relative; z-index:2;
+    max-width:820px; margin:0 auto 6px;
+    background:#fff4f9; border:1.5px solid var(--rose);
+    border-radius:26px; padding:22px 20px 18px; text-align:center;
+    box-shadow:0 20px 50px rgba(200,70,130,.22);
+  }
+  .hero img{ width:min(230px,66%); display:block; margin:0 auto 6px; }
+  .hero p{ font-size:.9rem; letter-spacing:2px; text-transform:uppercase; color:var(--rose); font-weight:700; }
+
+  /* ===== Grade de produtos ===== */
+  .grid{
+    position:relative; z-index:2;
+    max-width:820px; margin:16px auto 0;
+    padding:0 12px;
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+  }
+  @media (max-width:520px){ .grid{ grid-template-columns:1fr; } }
+  .prod{
+    background:var(--card); border:1px solid var(--rose-line);
+    border-radius:20px; overflow:hidden; display:flex; flex-direction:column;
+    box-shadow:0 10px 26px rgba(200,70,130,.12);
+  }
+  .gallery{ position:relative; background:var(--rose-light); aspect-ratio:1/1; }
+  .gallery img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery .nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:34px; height:34px; border:none; border-radius:50%;
+    background:rgba(255,255,255,.85); color:var(--rose); cursor:pointer;
+    font-size:1.1rem; line-height:1; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+  }
+  .gallery .prev{ left:8px; } .gallery .next{ right:8px; }
+  .gallery .dots{
+    position:absolute; bottom:8px; left:0; right:0;
+    display:flex; justify-content:center; gap:5px;
+  }
+  .gallery .dots i{
+    width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.6);
+  }
+  .gallery .dots i.on{ background:#fff; }
+  .prod .info{ padding:12px 14px 14px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .prod .nome{ font-weight:600; font-size:.98rem; line-height:1.25; color:var(--ink); }
+  .prod .preco{ font-weight:800; font-size:1.15rem; color:var(--rose-deep); }
+  .prod .add{
+    margin-top:auto; border:none; cursor:pointer;
+    background:var(--rose); color:#fff; font-weight:700; font-size:.9rem;
+    padding:11px 12px; border-radius:12px; font-family:inherit;
+    transition:transform .15s ease;
+  }
+  .prod .add:hover{ transform:translateY(-2px); }
+  .prod .add.added{ background:var(--ok); }
+
+  /* ===== Rodapé de infos (política / horário) ===== */
+  .infos{
+    position:relative; z-index:2;
+    max-width:820px; margin:22px auto 0; padding:0 12px;
+    display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .infobtn{
+    flex:1 1 200px;
+    display:flex; align-items:center; gap:13px;
+    background:var(--card); border:1px solid var(--rose-line);
+    border-radius:16px; padding:14px 16px; cursor:pointer;
+    text-decoration:none; color:var(--ink); font-family:inherit; text-align:left;
+  }
+  .infobtn:hover{ border-color:var(--rose); }
+  .infobtn .g{
+    width:42px;height:42px;flex:none;border-radius:12px;background:var(--rose-light);
+    color:var(--rose); display:flex;align-items:center;justify-content:center;
+  }
+  .infobtn .g svg{ width:22px;height:22px; }
+  .infobtn b{ display:block; font-size:.95rem; }
+  .infobtn span{ font-size:.82rem; color:var(--muted); }
+
+  .made{
+    position:relative; z-index:2;
+    text-align:center; margin:22px auto 0; padding:0 16px;
+    font-size:.64rem; color:#a85888; text-shadow:0 1px 2px rgba(255,255,255,.65);
+  }
+  .made a{ color:var(--rose); font-weight:700; text-decoration:none; white-space:nowrap; }
+
+  /* ===== Botão flutuante do carrinho ===== */
+  .cartfab{
+    position:fixed; z-index:45; right:16px; bottom:16px;
+    background:var(--rose); color:#fff; border:none; cursor:pointer;
+    height:56px; padding:0 20px 0 18px; border-radius:30px;
+    display:flex; align-items:center; gap:10px; font-family:inherit;
+    font-weight:700; font-size:.95rem;
+    box-shadow:0 12px 28px rgba(232,76,146,.5);
+  }
+  .cartfab svg{ width:24px; height:24px; }
+  .cartfab .count{
+    background:#fff; color:var(--rose); border-radius:50%;
+    min-width:22px; height:22px; padding:0 6px;
+    display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:800;
+  }
+
+  /* ===== Drawer do carrinho ===== */
+  .overlay{
+    position:fixed; inset:0; z-index:70; display:none;
+    background:rgba(90,20,55,.5); backdrop-filter:blur(3px);
+  }
+  .overlay.open{ display:block; }
+  .drawer{
+    position:fixed; z-index:71; top:0; right:0; height:100%;
+    width:min(400px,92%); background:#fff;
+    display:flex; flex-direction:column;
+    transform:translateX(100%); transition:transform .28s ease;
+    box-shadow:-10px 0 40px rgba(120,20,60,.35);
+  }
+  .drawer.open{ transform:translateX(0); }
+  .drawer header{
+    padding:20px 20px 14px; border-bottom:1px solid var(--rose-line);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .drawer header h2{ font-size:1.05rem; color:var(--rose); text-transform:uppercase; letter-spacing:1px; }
+  .drawer .x{
+    width:34px;height:34px;border:1px solid var(--rose-line);border-radius:50%;
+    background:#fff;color:var(--rose);font-size:1.2rem;cursor:pointer;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .items{ flex:1; overflow-y:auto; padding:12px 20px; }
+  .empty{ text-align:center; color:var(--muted); padding:40px 10px; font-size:.92rem; }
+  .item{ display:flex; gap:12px; padding:12px 0; border-bottom:1px dashed var(--rose-line); }
+  .item img{ width:60px;height:60px;object-fit:cover;border-radius:12px;flex:none;background:var(--rose-light); }
+  .item .d{ flex:1; min-width:0; }
+  .item .d .n{ font-weight:600; font-size:.9rem; color:var(--ink); }
+  .item .d .p{ font-size:.85rem; color:var(--rose-deep); font-weight:700; margin-top:2px; }
+  .qty{ display:flex; align-items:center; gap:10px; margin-top:8px; }
+  .qty button{
+    width:26px;height:26px;border:1px solid var(--rose-line);border-radius:8px;
+    background:#fff;color:var(--rose);font-size:1rem;cursor:pointer;line-height:1;font-family:inherit;
+  }
+  .qty .rm{ margin-left:auto; border:none; background:none; color:var(--muted); font-size:.78rem; cursor:pointer; text-decoration:underline; }
+
+  .checkout{ border-top:1px solid var(--rose-line); padding:16px 20px 20px; background:#fff4f9; }
+  .checkout .frete{ margin-bottom:12px; }
+  .checkout .frete p{ font-size:.78rem; text-transform:uppercase; letter-spacing:1px; color:var(--rose); font-weight:700; margin-bottom:8px; }
+  .opt{ display:flex; align-items:center; gap:10px; padding:9px 12px; border:1px solid var(--rose-line); border-radius:12px; margin-bottom:8px; cursor:pointer; font-size:.9rem; background:#fff; }
+  .opt input{ accent-color:var(--rose); }
+  .opt.sel{ border-color:var(--rose); background:var(--rose-light); }
+  .total{ display:flex; justify-content:space-between; align-items:baseline; margin:6px 0 14px; }
+  .total b{ font-size:1.3rem; color:var(--rose-deep); }
+  .finish{
+    width:100%; border:none; cursor:pointer; font-family:inherit;
+    background:var(--ok); color:#fff; font-weight:700; font-size:1rem;
+    padding:14px; border-radius:14px; display:flex; align-items:center; justify-content:center; gap:10px;
+  }
+  .finish:disabled{ opacity:.5; cursor:not-allowed; }
+  .finish svg{ width:22px;height:22px; }
+
+  /* ===== Modal genérico (política) ===== */
+  .modal{ position:fixed; inset:0; z-index:80; display:none; align-items:center; justify-content:center; padding:24px 18px; background:rgba(80,25,50,.45); backdrop-filter:blur(3px); }
+  .modal.open{ display:flex; }
+  .modal-card{ width:100%; max-width:420px; max-height:82vh; display:flex; flex-direction:column; background:#fff; border:1.5px solid var(--rose); border-radius:26px; overflow:hidden; }
+  .modal-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:22px 22px 14px; border-bottom:1px solid var(--rose-line); }
+  .modal-head h2{ font-size:1rem; font-weight:700; letter-spacing:1.5px; color:var(--rose); text-transform:uppercase; line-height:1.35; }
+  .modal-head h2 small{ display:block; font-size:.72rem; letter-spacing:2px; color:var(--muted); font-weight:600; margin-top:4px; }
+  .modal-close{ flex:none; width:34px;height:34px;border:1px solid var(--rose-line);border-radius:50%;background:#fff;color:var(--rose);font-size:1.1rem;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center; }
+  .modal-body{ padding:18px 22px 24px; overflow-y:auto; }
+  .modal-body h3{ font-size:.82rem; text-transform:uppercase; letter-spacing:1.2px; color:var(--rose); margin:16px 0 8px; }
+  .modal-body h3:first-child{ margin-top:0; }
+  .modal-body p{ font-size:.92rem; line-height:1.6; color:var(--ink); margin-bottom:8px; }
+  .modal-body ul{ list-style:none; margin:4px 0 10px; }
+  .modal-body li{ position:relative; padding-left:18px; margin-bottom:6px; font-size:.92rem; line-height:1.55; color:var(--ink); }
+  .modal-body li::before{ content:''; position:absolute; left:2px; top:.55em; width:5px;height:5px;background:var(--rose);transform:rotate(45deg);border-radius:1px; }
+  .hours{ width:100%; border-collapse:collapse; font-size:.95rem; }
+  .hours td{ padding:7px 0; border-bottom:1px dashed var(--rose-line); color:var(--ink); }
+  .hours tr:last-child td{ border-bottom:none; }
+  .hours td:last-child{ text-align:right; font-weight:700; }
+</style>
+</head>
+<body>
+
+  <!-- ===== Cabeçalho ===== -->
+  <div class="topbar">
+    <a class="back" href="/">‹ Voltar ao cartão</a>
+    <a class="back" href="https://www.instagram.com/boutique_brooksaintss" target="_blank" rel="noopener">Instagram</a>
+  </div>
+
+  <div class="hero">
+    <img src="/logo.png" alt="Brook'Saints Boutique">
+    <p>Loja de roupas</p>
+  </div>
+
+  <!-- ===== Produtos ===== -->
+  <div class="grid" id="grid"></div>
+
+  <!-- ===== Infos ===== -->
+  <div class="infos">
+    <button class="infobtn" type="button" onclick="openModal('politica')">
+      <span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
+      <span><b>Política de Troca</b><span>Toque para ler</span></span>
+    </button>
+    <button class="infobtn" type="button" onclick="openModal('horario')">
+      <span class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+      <span><b>Horário</b><span>Segunda a sábado · 9h–18h</span></span>
+    </button>
+  </div>
+
+  <p class="made">
+    Este mini site foi criado por Elizandra Straub ·
+    <a href="https://wa.me/5541999117651" target="_blank" rel="noopener">(41) 9 9911-7651</a>
+  </p>
+
+  <!-- ===== Botão do carrinho ===== -->
+  <button class="cartfab" id="cartfab" onclick="openCart()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L21 7H6"/></svg>
+    <span>Carrinho</span>
+    <span class="count" id="count">0</span>
+  </button>
+
+  <!-- ===== Drawer do carrinho ===== -->
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+  <aside class="drawer" id="drawer" aria-label="Carrinho">
+    <header>
+      <h2>Seu carrinho</h2>
+      <button class="x" onclick="closeCart()" aria-label="Fechar">&times;</button>
+    </header>
+    <div class="items" id="items"></div>
+    <div class="checkout">
+      <div class="frete">
+        <p>Entrega</p>
+        <label class="opt sel"><input type="radio" name="frete" value="Retirada na loja" checked onchange="selFrete(this)"> Retirada na loja</label>
+        <label class="opt"><input type="radio" name="frete" value="Entrega via Uber (frete a combinar)" onchange="selFrete(this)"> Entrega via Uber (frete a combinar)</label>
+      </div>
+      <div class="total"><span>Total</span><b id="total">R$ 0,00</b></div>
+      <button class="finish" id="finish" onclick="finalizar()" disabled>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.16-1.32A10 10 0 1 0 12 2z"/></svg>
+        Finalizar no WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===== Modal Política ===== -->
+  <div class="modal" id="politica" onclick="if(event.target===this)closeModal('politica')">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Política de Troca<small>Brook Saints Boutique</small></h2>
+        <button class="modal-close" onclick="closeModal('politica')" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li>O prazo para troca é de 7 dias corridos, contados a partir da data da compra.</li>
+          <li>As trocas são realizadas apenas de forma presencial em nossa loja.</li>
+        </ul>
+        <h3>Não realizamos trocas nos seguintes casos</h3>
+        <ul>
+          <li>Peças em promoção;</li>
+          <li>Peças brancas;</li>
+          <li>Peças adquiridas em live;</li>
+          <li>Peças com marca de uso, odor, lavadas ou sem condições de revenda.</li>
+        </ul>
+        <h3>Estorno</h3>
+        <p>Não realizamos estorno de dinheiro.</p>
+        <p>A troca será feita por outra peça disponível na loja, respeitando as regras acima.</p>
+        <h3>Sacolas deixadas na loja</h3>
+        <p>O prazo para retirada é de até 7 dias.</p>
+        <p>Após esse período, a loja não se responsabiliza pelas sacolas não retiradas.</p>
+        <p style="margin-top:14px;color:var(--muted)">Agradecemos a compreensão.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Modal Horário ===== -->
+  <div class="modal" id="horario" onclick="if(event.target===this)closeModal('horario')">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>Horário de Funcionamento</h2>
+        <button class="modal-close" onclick="closeModal('horario')" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table class="hours">
+          <tr><td>Segunda a sexta</td><td>09h – 18h</td></tr>
+          <tr><td>Sábado</td><td>09h – 18h</td></tr>
+          <tr><td>Domingo</td><td>Fechado</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* =====================================================================
+   PRODUTOS — EDITE AQUI
+   Cada peça: nome, preço e uma lista de fotos (várias fotos por peça).
+   Para usar fotos reais: suba as imagens na pasta /loja/fotos/ e troque
+   os placeholders por, ex.: fotos:["/loja/fotos/vestido-1.jpg","/loja/fotos/vestido-2.jpg"]
+   ===================================================================== */
+function ph(txt, tom){ // gera uma foto-placeholder rosa (trocar por fotos reais)
+  var c1 = tom || '#f7b8d3', c2 = '#e84c92';
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">'+
+    '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+c1+'"/><stop offset="1" stop-color="'+c2+'"/></linearGradient></defs>'+
+    '<rect width="600" height="600" fill="url(#g)"/>'+
+    '<g fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" transform="translate(230,210) scale(5.2)">'+
+    '<path d="M8 3a2 2 0 1 1 2 2"/><path d="M10 5v2"/><path d="M10 7 2 13a1.6 1.6 0 0 0 1 2.9h14a1.6 1.6 0 0 0 1-2.9L10 7z"/></g>'+
+    '<text x="300" y="470" font-family="Arial" font-size="34" fill="#ffffff" text-anchor="middle" opacity="0.95">'+txt+'</text></svg>';
+  return 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
+}
+var PRODUTOS = [
+  { id:'p1', nome:'Calça Jeans Strass Hello Kitty', preco:189.90,
+    fotos:['/loja/fotos/kitty-1.jpg','/loja/fotos/kitty-2.jpg'] },
+  { id:'p2', nome:'Calça Jeans Wide Leg Strass', preco:219.90,
+    fotos:['/loja/fotos/wide-1.jpg','/loja/fotos/wide-2.jpg','/loja/fotos/wide-3.jpg'] },
+  { id:'p3', nome:'Calça Cargo Jeans Patches', preco:199.90,
+    fotos:['/loja/fotos/cargo-1.jpg','/loja/fotos/cargo-2.jpg'] },
+  { id:'p4', nome:'Conjunto Jeans Cargo (jaqueta + calça)', preco:259.90,
+    fotos:['/loja/fotos/conjunto-1.jpg','/loja/fotos/conjunto-2.jpg','/loja/fotos/conjunto-3.jpg','/loja/fotos/conjunto-4.jpg'] },
+];
+
+/* ===== Carrinho ===== */
+var cart = {};
+try{ cart = JSON.parse(localStorage.getItem('bs_cart')||'{}'); }catch(e){ cart = {}; }
+var frete = 'Retirada na loja';
+var WHATS = '5541998894516'; // WhatsApp principal da loja
+
+function salvar(){ try{ localStorage.setItem('bs_cart', JSON.stringify(cart)); }catch(e){} }
+function money(v){ return 'R$ '+v.toFixed(2).replace('.',','); }
+function prodById(id){ return PRODUTOS.find(function(p){return p.id===id;}); }
+
+/* ===== Render dos produtos ===== */
+function renderGrid(){
+  var g = document.getElementById('grid');
+  g.innerHTML = PRODUTOS.map(function(p){
+    var imgs = p.fotos.map(function(f,i){ return '<img src="'+f+'" alt="'+p.nome+'" data-i="'+i+'" '+(i===0?'':'hidden')+'>'; }).join('');
+    var dots = p.fotos.length>1 ? '<div class="dots">'+p.fotos.map(function(_,i){return '<i class="'+(i===0?'on':'')+'"></i>';}).join('')+'</div>' : '';
+    var navs = p.fotos.length>1 ? '<button class="nav prev" onclick="slide(\''+p.id+'\',-1)" aria-label="Anterior">‹</button><button class="nav next" onclick="slide(\''+p.id+'\',1)" aria-label="Próxima">›</button>' : '';
+    return '<div class="prod" data-id="'+p.id+'" data-idx="0">'+
+      '<div class="gallery">'+imgs+navs+dots+'</div>'+
+      '<div class="info"><div class="nome">'+p.nome+'</div><div class="preco">'+money(p.preco)+'</div>'+
+      '<button class="add" onclick="add(\''+p.id+'\',this)">Adicionar ao carrinho</button></div></div>';
+  }).join('');
+}
+function slide(id, dir){
+  var el = document.querySelector('.prod[data-id="'+id+'"]');
+  var p = prodById(id); var n = p.fotos.length;
+  var idx = (parseInt(el.dataset.idx,10) + dir + n) % n;
+  el.dataset.idx = idx;
+  el.querySelectorAll('.gallery img').forEach(function(im){ im.hidden = (parseInt(im.dataset.i,10)!==idx); });
+  el.querySelectorAll('.dots i').forEach(function(d,i){ d.className = (i===idx?'on':''); });
+}
+function add(id, btn){
+  cart[id] = (cart[id]||0)+1; salvar(); updateBadge();
+  if(btn){ btn.textContent='Adicionado ✓'; btn.classList.add('added'); setTimeout(function(){ btn.textContent='Adicionar ao carrinho'; btn.classList.remove('added'); },1100); }
+}
+
+/* ===== Badge / total ===== */
+function count(){ var n=0; for(var k in cart){ n+=cart[k]; } return n; }
+function totalValor(){ var t=0; for(var k in cart){ var p=prodById(k); if(p) t+=p.preco*cart[k]; } return t; }
+function updateBadge(){ document.getElementById('count').textContent = count(); }
+
+/* ===== Drawer ===== */
+function openCart(){ renderItems(); document.getElementById('overlay').classList.add('open'); document.getElementById('drawer').classList.add('open'); }
+function closeCart(){ document.getElementById('overlay').classList.remove('open'); document.getElementById('drawer').classList.remove('open'); }
+function selFrete(r){ frete=r.value; document.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel');}); r.closest('.opt').classList.add('sel'); }
+function renderItems(){
+  var box = document.getElementById('items');
+  var keys = Object.keys(cart).filter(function(k){return cart[k]>0 && prodById(k);});
+  if(!keys.length){ box.innerHTML='<div class="empty">Seu carrinho está vazio.<br>Adicione suas peças favoritas 💗</div>'; }
+  else{
+    box.innerHTML = keys.map(function(k){ var p=prodById(k);
+      return '<div class="item"><img src="'+p.fotos[0]+'" alt=""><div class="d">'+
+        '<div class="n">'+p.nome+'</div><div class="p">'+money(p.preco)+'</div>'+
+        '<div class="qty"><button onclick="chg(\''+k+'\',-1)">–</button><span>'+cart[k]+'</span>'+
+        '<button onclick="chg(\''+k+'\',1)">+</button><button class="rm" onclick="chg(\''+k+'\',-999)">remover</button></div>'+
+        '</div></div>';
+    }).join('');
+  }
+  document.getElementById('total').textContent = money(totalValor());
+  document.getElementById('finish').disabled = keys.length===0;
+}
+function chg(id, d){
+  if(d===-999){ delete cart[id]; } else { cart[id]=(cart[id]||0)+d; if(cart[id]<=0) delete cart[id]; }
+  salvar(); updateBadge(); renderItems();
+}
+
+/* ===== Finalizar no WhatsApp ===== */
+function finalizar(){
+  var keys = Object.keys(cart).filter(function(k){return cart[k]>0 && prodById(k);});
+  if(!keys.length) return;
+  var linhas = keys.map(function(k){ var p=prodById(k); return '• '+cart[k]+'x '+p.nome+' — '+money(p.preco*cart[k]); });
+  var msg = 'Olá, Brook\'Saints! Quero fazer um pedido:\n\n'+linhas.join('\n')+
+            '\n\nTotal: '+money(totalValor())+
+            '\nEntrega: '+frete;
+  window.open('https://wa.me/'+WHATS+'?text='+encodeURIComponent(msg), '_blank');
+}
+
+/* ===== Modais ===== */
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+
+renderGrid(); updateBadge();
+</script>
+</body>
+</html>
