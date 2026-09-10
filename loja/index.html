@@ -42,27 +42,38 @@
   a{color:inherit}
 
   /* ===== Cabeçalho ===== */
-  .topbar{
-    position:relative; z-index:2;
-    max-width:820px; margin:0 auto;
-    padding:18px 16px 8px;
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
-  }
-  .topbar .back{
-    text-decoration:none; font-size:.82rem; font-weight:600;
-    color:var(--rose); background:#fff; border:1px solid var(--rose-line);
-    padding:8px 14px; border-radius:12px; white-space:nowrap;
-  }
-  .topbar .back:hover{ background:var(--rose-light); }
+  /* ===== Cabeçalho fixo ===== */
+  .site-head{ position:sticky; top:0; z-index:50; box-shadow:0 4px 16px rgba(200,70,130,.18); }
+  .annc{ background:var(--rose-deep); color:#fff; overflow:hidden; white-space:nowrap; }
+  .annc span{ display:inline-block; padding:7px 0; font-size:.74rem; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; animation:annc 18s linear infinite; }
+  @keyframes annc{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .topbar{ background:#fff4f9; }
+  .topbar .inner{ max-width:900px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 14px; }
+  .topbar .right{ display:flex; align-items:center; gap:8px; }
+  .back{ text-decoration:none; font-size:.8rem; font-weight:600; color:var(--rose); background:#fff; border:1px solid var(--rose-line); padding:8px 13px; border-radius:12px; white-space:nowrap; }
+  .back:hover{ background:var(--rose-light); }
+  .hcart{ display:flex; align-items:center; gap:7px; background:var(--rose); color:#fff; border:none; cursor:pointer; font-family:inherit; font-weight:700; font-size:.82rem; padding:8px 13px; border-radius:12px; }
+  .hcart svg{ width:19px; height:19px; }
+  .hcart .count{ background:#fff; color:var(--rose); border-radius:50%; min-width:19px; height:19px; padding:0 5px; display:flex; align-items:center; justify-content:center; font-size:.7rem; font-weight:800; }
+
   .hero{
     position:relative; z-index:2;
-    max-width:820px; margin:0 auto 6px;
-    background:#fff4f9; border:1.5px solid var(--rose);
-    border-radius:26px; padding:22px 20px 18px; text-align:center;
-    box-shadow:0 20px 50px rgba(200,70,130,.22);
+    max-width:820px; margin:12px auto 6px;
+    background:#fff4f9; border:none;
+    border-radius:26px; padding:18px 20px 14px; text-align:center;
+    box-shadow:0 14px 36px rgba(200,70,130,.16);
   }
   .hero img{ width:min(200px,58%); display:block; margin:0 auto 4px; }
   .hero p{ font-size:.85rem; letter-spacing:2px; text-transform:uppercase; color:var(--rose); font-weight:700; }
+
+  /* ===== Nome da coleção ===== */
+  .collname{
+    position:relative; z-index:2; text-align:center;
+    max-width:900px; margin:18px auto 0; padding:0 16px;
+    font-size:1.15rem; font-weight:800; letter-spacing:1px;
+    color:var(--rose-deep); text-transform:uppercase;
+  }
+  .collname small{ display:block; font-size:.7rem; letter-spacing:2px; color:var(--muted); font-weight:600; margin-top:4px; }
 
   /* ===== Slideshow do cabeçalho ===== */
   .slider{ position:relative; z-index:2; max-width:900px; margin:12px auto 0; padding:0 12px; }
@@ -120,7 +131,7 @@
     border-radius:16px; overflow:hidden; display:flex; flex-direction:column;
     box-shadow:0 8px 20px rgba(200,70,130,.12);
   }
-  .gallery{ position:relative; background:var(--rose-light); aspect-ratio:3/4; }
+  .gallery{ position:relative; background:var(--rose-light); aspect-ratio:3/4; touch-action:pan-y; cursor:zoom-in; }
   .gallery img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
   .gallery .nav{
     position:absolute; top:50%; transform:translateY(-50%);
@@ -189,6 +200,18 @@
     font-size:.64rem; color:#a85888; text-shadow:0 1px 2px rgba(255,255,255,.65);
   }
   .made a{ color:var(--rose); font-weight:700; text-decoration:none; white-space:nowrap; }
+
+  /* ===== Zoom / Lightbox ===== */
+  .lb{ position:fixed; inset:0; z-index:90; display:none; background:rgba(20,5,12,.93); align-items:center; justify-content:center; overflow:hidden; }
+  .lb.open{ display:flex; }
+  .lb img{ max-width:100%; max-height:100%; object-fit:contain; touch-action:none; cursor:zoom-in; transition:none; user-select:none; -webkit-user-drag:none; }
+  .lb img.zoomed{ cursor:grab; }
+  .lb .lbx{ position:absolute; top:14px; right:16px; z-index:2; width:42px; height:42px; border:none; border-radius:50%; background:rgba(255,255,255,.9); color:var(--rose); font-size:1.5rem; line-height:1; cursor:pointer; }
+  .lb .lbnav{ position:absolute; top:50%; transform:translateY(-50%); z-index:2; width:44px; height:44px; border:none; border-radius:50%; background:rgba(255,255,255,.85); color:var(--rose); font-size:1.6rem; line-height:1; cursor:pointer; }
+  .lb .lbnav.l{ left:14px; } .lb .lbnav.r{ right:14px; }
+  .lb .lbdots{ position:absolute; bottom:16px; left:0; right:0; display:flex; justify-content:center; gap:6px; z-index:2; }
+  .lb .lbdots i{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.5); }
+  .lb .lbdots i.on{ background:#fff; }
 
   /* ===== Botão flutuante do carrinho ===== */
   .cartfab{
@@ -284,10 +307,21 @@
 <body>
 
   <!-- ===== Cabeçalho ===== -->
-  <div class="topbar">
-    <a class="back" href="/">‹ Voltar ao cartão</a>
-    <a class="back" href="https://www.instagram.com/boutique_brooksaintss" target="_blank" rel="noopener">Instagram</a>
-  </div>
+  <header class="site-head">
+    <div class="annc"><span>💗 Bday da patroa · Sábado 12/09 · a partir das 09:00 &nbsp;&nbsp;•&nbsp;&nbsp; Bday da patroa · Sábado 12/09 · a partir das 09:00 &nbsp;&nbsp;•&nbsp;&nbsp; Bday da patroa · Sábado 12/09 · a partir das 09:00 &nbsp;&nbsp;•&nbsp;&nbsp; Bday da patroa · Sábado 12/09 · a partir das 09:00 &nbsp;&nbsp;•&nbsp;&nbsp; </span></div>
+    <div class="topbar">
+      <div class="inner">
+        <a class="back" href="/">‹ Voltar</a>
+        <div class="right">
+          <a class="back" href="https://www.instagram.com/boutique_brooksaintss" target="_blank" rel="noopener">Instagram</a>
+          <button class="hcart" onclick="openCart()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L21 7H6"/></svg>
+            <span>Carrinho</span><span class="count" id="count">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <div class="hero">
     <img src="/logo.png" alt="Brook'Saints Boutique">
@@ -310,6 +344,7 @@
   <div class="cats" id="cats"></div>
 
   <!-- ===== Produtos ===== -->
+  <h2 class="collname">Coleção Maliciosa<small>Jeans com muito brilho</small></h2>
   <div class="grid" id="grid"></div>
 
   <!-- ===== Infos ===== -->
@@ -328,13 +363,6 @@
     Este mini site foi criado por Elizandra Straub ·
     <a href="https://wa.me/5541999117651" target="_blank" rel="noopener">(41) 9 9911-7651</a>
   </p>
-
-  <!-- ===== Botão do carrinho ===== -->
-  <button class="cartfab" id="cartfab" onclick="openCart()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L21 7H6"/></svg>
-    <span>Carrinho</span>
-    <span class="count" id="count">0</span>
-  </button>
 
   <!-- ===== Drawer do carrinho ===== -->
   <div class="overlay" id="overlay" onclick="closeCart()"></div>
@@ -403,6 +431,15 @@
         </table>
       </div>
     </div>
+  </div>
+
+  <!-- ===== Zoom / Lightbox ===== -->
+  <div class="lb" id="lb">
+    <button class="lbx" onclick="lbClose()" aria-label="Fechar">&times;</button>
+    <button class="lbnav l" onclick="lbNav(-1)" aria-label="Anterior">‹</button>
+    <button class="lbnav r" onclick="lbNav(1)" aria-label="Próxima">›</button>
+    <img id="lbimg" alt="">
+    <div class="lbdots" id="lbdots"></div>
   </div>
 
 <script>
@@ -559,7 +596,46 @@ function slideHero(d){ showSlide(sIdx+d); autoSlide(); }
 function goSlide(i){ showSlide(i); autoSlide(); }
 function autoSlide(){ clearInterval(sTimer); sTimer=setInterval(function(){ showSlide(sIdx+1); }, 4500); }
 
-renderCats(); renderGrid(); updateBadge(); initSlider();
+/* ===== Zoom / Lightbox ===== */
+var lbFotos=[], lbIdx=0, lbScale=1, lbX=0, lbY=0, lbDrag=false, lbSX=0, lbSY=0, lbStartX=0, lbStartY=0, lbMoved=false;
+function openLightbox(id, idx){
+  var p=prodById(id); if(!p) return;
+  lbFotos=p.fotos; lbIdx=idx||0;
+  document.getElementById('lbdots').innerHTML=lbFotos.map(function(_,i){ return '<i class="'+(i===lbIdx?'on':'')+'"></i>'; }).join('');
+  renderLb(); document.getElementById('lb').classList.add('open');
+}
+function renderLb(){
+  var im=document.getElementById('lbimg'); im.src=lbFotos[lbIdx]; lbResetZoom();
+  Array.prototype.forEach.call(document.querySelectorAll('#lbdots i'), function(d,i){ d.classList.toggle('on', i===lbIdx); });
+}
+function lbNav(d){ lbIdx=(lbIdx+d+lbFotos.length)%lbFotos.length; renderLb(); }
+function lbClose(){ document.getElementById('lb').classList.remove('open'); }
+function lbResetZoom(){ lbScale=1; lbX=0; lbY=0; applyLb(); var im=document.getElementById('lbimg'); if(im) im.classList.remove('zoomed'); }
+function applyLb(){ var im=document.getElementById('lbimg'); if(im) im.style.transform='translate('+lbX+'px,'+lbY+'px) scale('+lbScale+')'; }
+function lbToggleZoom(){ var im=document.getElementById('lbimg'); if(lbScale>1){ lbResetZoom(); } else { lbScale=2.4; im.classList.add('zoomed'); applyLb(); } }
+
+/* ===== Deslizar cards + abrir zoom ===== */
+function initInteractions(){
+  var grid=document.getElementById('grid');
+  var gSX=0, gSY=0, gEl=null;
+  grid.addEventListener('pointerdown', function(e){
+    if(e.target.closest('.nav')){ gEl=null; return; }
+    var g=e.target.closest('.gallery'); if(!g){ gEl=null; return; }
+    gEl=g.closest('.prod'); gSX=e.clientX; gSY=e.clientY;
+  });
+  grid.addEventListener('pointerup', function(e){
+    if(!gEl) return; var dx=e.clientX-gSX, dy=e.clientY-gSY, el=gEl; gEl=null;
+    if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)){ slide(el.dataset.id, dx<0?1:-1); }
+    else if(Math.abs(dx)<8 && Math.abs(dy)<8){ openLightbox(el.dataset.id, parseInt(el.dataset.idx,10)||0); }
+  });
+  var im=document.getElementById('lbimg');
+  im.addEventListener('pointerdown', function(e){ lbDrag=true; lbMoved=false; lbSX=e.clientX; lbSY=e.clientY; lbStartX=lbX; lbStartY=lbY; });
+  im.addEventListener('pointermove', function(e){ if(!lbDrag) return; var dx=e.clientX-lbSX, dy=e.clientY-lbSY; if(Math.abs(dx)>5||Math.abs(dy)>5) lbMoved=true; if(lbScale>1){ lbX=lbStartX+dx; lbY=lbStartY+dy; applyLb(); } });
+  window.addEventListener('pointerup', function(e){ if(!lbDrag) return; lbDrag=false; if(lbScale===1){ var dx=e.clientX-lbSX; if(Math.abs(dx)>40){ lbNav(dx<0?1:-1); } } });
+  im.addEventListener('click', function(){ if(lbMoved) return; lbToggleZoom(); });
+}
+
+renderCats(); renderGrid(); updateBadge(); initSlider(); initInteractions();
 </script>
 </body>
 </html>
