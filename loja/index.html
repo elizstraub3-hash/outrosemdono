@@ -346,7 +346,7 @@
             <a onclick="verCategoria('Reta')">Reta</a>
             <a onclick="verCategoria('Wide Leg')">Wide Leg</a>
             <a onclick="verCategoria('Cargo')">Cargo</a>
-            <a onclick="verCategoria('Shorts')">Shorts</a>
+            <a onclick="verCategoria('Saia')">Saias</a>
           </div>
         </div>
         <a onclick="verCategoria('Conjunto')">Conjuntos</a>
@@ -462,7 +462,7 @@
           <a onclick="verCategoria('Reta')">Reta</a>
           <a onclick="verCategoria('Wide Leg')">Wide Leg</a>
           <a onclick="verCategoria('Cargo')">Cargo</a>
-          <a onclick="verCategoria('Shorts')">Shorts</a>
+          <a onclick="verCategoria('Saia')">Saias</a>
         </div>
       </div>
       <a onclick="verCategoria('Conjunto')">Conjuntos</a>
@@ -525,6 +525,16 @@ var PRODUTOS = [
     fotos:['/loja/fotos/cargo-1.jpg','/loja/fotos/cargo-2.jpg'] },
   { id:'p4', nome:"Conjunto Jeans (jaqueta cropped + calça cargo)", preco:249.90, cat:'Cargo', grupo:['Jeans','Conjunto'], tags:['maisvendido'], tamanhos:['38'],
     fotos:['/loja/fotos/conjunto-1.jpg','/loja/fotos/conjunto-2.jpg','/loja/fotos/conjunto-3.jpg','/loja/fotos/conjunto-4.jpg'] },
+  { id:'p5', nome:"Conjunto Listrado Branco (corset + calça jogger)", preco:189.90, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['38'],
+    fotos:['/loja/fotos/listrado-1.jpg','/loja/fotos/listrado-2.jpg','/loja/fotos/listrado-3.jpg'] },
+  { id:'p6', nome:"Conjunto Saia Jeans Maliciosa (top + saia)", preco:199.90, cat:'Saia', grupo:['Jeans','Conjunto'], tags:['novidade'], tamanhos:['38'],
+    fotos:['/loja/fotos/maliciosa-saia-1.jpg','/loja/fotos/maliciosa-saia-2.jpg'] },
+  { id:'p7', nome:"Conjunto Saia Jeans Black Strass (corset + saia)", preco:209.90, cat:'Saia', grupo:['Jeans','Conjunto'], tags:['novidade'], tamanhos:['38'],
+    fotos:['/loja/fotos/blackstrass-1.jpg','/loja/fotos/blackstrass-2.jpg'] },
+  { id:'p8', nome:"Conjunto Saia Jeans Laço Rosa (corset + saia)", preco:199.90, cat:'Saia', grupo:['Jeans','Conjunto'], tags:['novidade'], tamanhos:['38'],
+    fotos:['/loja/fotos/laco-1.jpg'] },
+  { id:'p9', nome:"Calça Jeans Cargo Black Strass", preco:229.90, cat:'Cargo', grupo:['Jeans'], tags:['novidade'], tamanhos:['38'],
+    fotos:['/loja/fotos/cargoblack-1.jpg','/loja/fotos/cargoblack-2.jpg','/loja/fotos/cargoblack-3.jpg'] },
 ];
 var WHATS='5541998894516';
 
@@ -661,7 +671,7 @@ function renderCatalog(){
   document.getElementById('catgrid').innerHTML = l.length ? l.map(cardHTML).join('') : '<div class="emptyblk">Nenhuma peça nesta categoria por enquanto. Em breve! 💗</div>';
 }
 function buildFilterMenu(){
-  var cats=[['all','Todas'],['Jeans','Jeans'],['Conjunto','Conjuntos'],['Reta','Reta'],['Wide Leg','Wide Leg'],['Cargo','Cargo'],['promo','Promoções']];
+  var cats=[['all','Todas'],['Jeans','Jeans'],['Conjunto','Conjuntos'],['Saia','Saias'],['Reta','Reta'],['Wide Leg','Wide Leg'],['Cargo','Cargo'],['promo','Promoções']];
   document.getElementById('filtermenu').innerHTML=cats.map(function(c){return '<button class="'+(c[0]===catFilter?'on':'')+'" onclick="setFilter(\''+c[0]+'\',\''+c[1]+'\')">'+c[1]+'</button>';}).join('');
 }
 function setFilter(v,label){ catFilter=v; catLabel=(v==='all')?'Todos os produtos':label; buildFilterMenu(); renderCatalog(); closeTools(); }
