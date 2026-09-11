@@ -43,23 +43,20 @@
   .wrap{max-width:var(--max); margin:0 auto; padding:0 16px}
 
   /* ===================== HEADER ===================== */
-  .topbar{ background:var(--rose-deep); color:#fff; font-size:.74rem; letter-spacing:.4px; overflow:hidden; }
+  .topbar{ background:var(--rose-deep); color:#fff; font-size:.74rem; letter-spacing:.4px; }
   .topbar .wrap{ display:flex; align-items:center; justify-content:center; min-height:32px; }
   .topbar span{ display:inline-flex; align-items:center; gap:6px; white-space:nowrap; }
   .topbar .sep{ opacity:.5; }
-  .topbar .static{ display:flex; gap:22px; flex-wrap:wrap; justify-content:center; padding:6px 0; }
-  .topbar .track{ display:none; white-space:nowrap; }
-  @media (max-width:640px){
-    .topbar .static{ display:none; }
-    .topbar .track{ display:inline-flex; gap:22px; padding:8px 0; animation:marq 18s linear infinite; }
-  }
-  @keyframes marq{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .topbar .static{ display:flex; gap:10px 22px; flex-wrap:wrap; justify-content:center; align-items:center; padding:7px 16px; text-align:center; }
+  @media (max-width:640px){ .topbar .sep{ display:none; } .topbar .static{ gap:6px 16px; } }
 
   header.site{ position:sticky; top:0; z-index:60; background:#fff; box-shadow:0 2px 14px rgba(180,60,110,.10); }
-  .hbar{ display:flex; align-items:center; gap:14px; min-height:64px; }
-  .logo{ display:flex; align-items:center; }
+  .hbar{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:8px; min-height:60px; }
+  .hbar .left{ justify-self:start; display:flex; align-items:center; }
+  .logo{ justify-self:center; display:flex; align-items:center; }
   .logo img{ height:42px; width:auto; }
-  .search{ flex:1; position:relative; max-width:520px; }
+  .searchrow{ display:flex; justify-content:center; padding:0 16px 12px; }
+  .search{ flex:1; position:relative; max-width:560px; width:100%; }
   .search input{
     width:100%; border:1px solid var(--line); background:var(--pink-050);
     border-radius:999px; padding:11px 42px 11px 16px; font-size:.9rem; color:var(--ink); outline:none;
@@ -67,7 +64,7 @@
   .search input:focus{ border-color:var(--rose); background:#fff; }
   .search .go{ position:absolute; right:6px; top:50%; transform:translateY(-50%); border:none; background:var(--rose); color:#fff; width:32px; height:32px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .search .go svg{ width:16px; height:16px; }
-  .icons{ display:flex; align-items:center; gap:6px; margin-left:auto; }
+  .icons{ justify-self:end; display:flex; align-items:center; gap:4px; }
   .iconbtn{ position:relative; background:none; border:none; cursor:pointer; color:var(--ink); padding:8px; border-radius:10px; display:flex; flex-direction:column; align-items:center; gap:2px; font-size:.62rem; }
   .iconbtn:hover{ color:var(--rose); background:var(--pink-050); }
   .iconbtn svg{ width:22px; height:22px; }
@@ -99,15 +96,12 @@
   @media (max-width:860px){
     nav.main{ display:none; }
     .hamb{ display:flex; }
-    .search{ display:none; }
     .acct, .favbtn{ display:none; }
     .iconbtn span:not(.badge){ display:none; }
-    .logo img{ height:36px; }
+    .logo img{ height:34px; }
   }
   @media (min-width:861px){
     .hamb{ display:none; }
-    .msearchbtn{ display:none; }
-    .msearch{ display:none !important; }
   }
 
   /* ===================== HERO SLIDER ===================== */
@@ -117,14 +111,14 @@
   .slide2.on{ opacity:1; }
   .slide2 img{ width:100%; height:100%; object-fit:cover; object-position:center 20%; }
   .slide2 .ov{
-    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
-    padding:0 8%; gap:12px;
-    background:linear-gradient(90deg, rgba(120,20,60,.5), rgba(120,20,60,.05) 60%, transparent);
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    padding:0 6%; gap:12px; text-align:center;
+    background:linear-gradient(rgba(80,15,42,.28), rgba(80,15,42,.52));
     color:#fff;
   }
-  .slide2 .ov h2{ font-size:clamp(1.6rem,4.6vw,3rem); font-weight:800; line-height:1.05; max-width:12ch; text-shadow:0 2px 12px rgba(0,0,0,.3); }
-  .slide2 .ov p{ font-size:clamp(.9rem,2.2vw,1.1rem); max-width:24ch; opacity:.95; }
-  .slide2 .ov .cta{ align-self:flex-start; margin-top:6px; background:#fff; color:var(--rose-deep); font-weight:800; font-size:.9rem; padding:12px 26px; border-radius:999px; box-shadow:0 8px 20px rgba(0,0,0,.2); }
+  .slide2 .ov h2{ font-size:clamp(1.6rem,4.6vw,3rem); font-weight:800; line-height:1.05; max-width:16ch; text-shadow:0 2px 12px rgba(0,0,0,.35); }
+  .slide2 .ov p{ font-size:clamp(.9rem,2.2vw,1.1rem); max-width:28ch; opacity:.96; }
+  .slide2 .ov .cta{ align-self:center; margin-top:6px; background:#fff; color:var(--rose-deep); font-weight:800; font-size:.9rem; padding:12px 28px; border-radius:999px; box-shadow:0 8px 20px rgba(0,0,0,.2); }
   .slide2 .ov .cta:hover{ background:var(--rose); color:#fff; }
   .hero .arw{ position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:42px; height:42px; border:none; border-radius:50%; background:rgba(255,255,255,.8); color:var(--rose-deep); font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .hero .arw.l{ left:14px; } .hero .arw.r{ right:14px; }
@@ -134,7 +128,7 @@
   @media (max-width:640px){
     .hero .track2{ height:74vh; max-height:560px; }
     .slide2 img{ object-position:center 15%; }
-    .slide2 .ov{ padding:0 22px 40px; justify-content:flex-end; background:linear-gradient(transparent, rgba(90,15,45,.15) 40%, rgba(90,15,45,.72)); text-align:left; }
+    .slide2 .ov{ padding:0 20px 42px; justify-content:flex-end; background:linear-gradient(transparent, rgba(90,15,45,.18) 40%, rgba(90,15,45,.74)); }
     .slide2 .ov h2{ max-width:100%; }
     .hero .arw{ display:none; }
   }
@@ -143,7 +137,7 @@
   .banners{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:26px 0; }
   .banner{ position:relative; border-radius:18px; overflow:hidden; min-height:180px; display:flex; align-items:flex-end; }
   .banner img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .banner .bt{ position:relative; z-index:2; padding:20px; color:#fff; background:linear-gradient(transparent, rgba(90,15,45,.75)); width:100%; }
+  .banner .bt{ position:relative; z-index:2; padding:20px; color:#fff; background:linear-gradient(transparent, rgba(90,15,45,.75)); width:100%; text-align:center; }
   .banner .bt b{ display:block; font-size:1.15rem; font-weight:800; }
   .banner .bt span{ font-size:.85rem; opacity:.95; }
   @media (max-width:640px){ .banners{ grid-template-columns:1fr; } }
@@ -152,8 +146,8 @@
 
   /* ===================== SEÇÕES / PRODUTOS ===================== */
   section.blk{ margin:36px 0; }
-  .blk-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:16px; }
-  .blk-head h2{ font-size:1.3rem; font-weight:800; letter-spacing:.3px; }
+  .blk-head{ display:flex; flex-direction:column; align-items:center; gap:5px; margin-bottom:16px; text-align:center; }
+  .blk-head h2{ font-size:1.35rem; font-weight:800; letter-spacing:.3px; }
   .blk-head .all{ font-size:.82rem; font-weight:700; color:var(--rose); white-space:nowrap; cursor:pointer; }
   .blk-head .all:hover{ text-decoration:underline; }
 
@@ -183,7 +177,7 @@
   .emptyblk{ color:var(--muted); font-size:.9rem; padding:16px 0; }
 
   /* ===== Catálogo com filtros ===== */
-  .toolbar{ display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+  .toolbar{ display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; justify-content:center; }
   .tool{ position:relative; }
   .tool>button{ display:inline-flex; align-items:center; gap:6px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:9px 16px; font-size:.82rem; font-weight:700; cursor:pointer; color:var(--ink); }
   .tool>button:hover{ border-color:var(--rose); color:var(--rose); }
@@ -194,16 +188,16 @@
 
   /* ===================== FOOTER ===================== */
   footer.site{ background:#1c1220; color:#f3e9ef; margin-top:44px; }
-  footer.site .wrap{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:28px; padding:38px 16px 26px; }
+  footer.site .wrap{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:28px; padding:38px 16px 26px; text-align:center; }
   footer .fcol h4{ font-size:.8rem; text-transform:uppercase; letter-spacing:1.4px; color:#f7b8d3; margin-bottom:12px; }
   footer .fcol a, footer .fcol p{ display:block; font-size:.86rem; color:#e7d5df; margin-bottom:9px; opacity:.9; }
   footer .fcol a:hover{ color:#fff; opacity:1; }
-  footer .flogo{ height:40px; margin-bottom:12px; background:#fff; padding:8px 10px; border-radius:10px; width:max-content; }
-  footer .social{ display:flex; gap:10px; margin-top:6px; }
+  footer .flogo{ height:40px; margin:0 auto 12px; background:#fff; padding:8px 10px; border-radius:10px; width:max-content; }
+  footer .social{ display:flex; gap:10px; margin-top:6px; justify-content:center; }
   footer .social a{ width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; margin:0; }
   footer .social a:hover{ background:var(--rose); }
   footer .social svg{ width:20px; height:20px; }
-  .pays{ display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
+  .pays{ display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; justify-content:center; }
   .pays span{ background:rgba(255,255,255,.1); border-radius:6px; padding:5px 9px; font-size:.66rem; font-weight:700; letter-spacing:.5px; }
   footer .copy{ border-top:1px solid rgba(255,255,255,.12); text-align:center; font-size:.74rem; color:#cbb4c1; padding:16px; }
   @media (max-width:700px){ footer.site .wrap{ grid-template-columns:1fr 1fr; gap:22px; } footer .fcol.big{ grid-column:1/-1; } }
@@ -294,33 +288,18 @@
         <span>🚚 Envio para todo o Brasil</span><span class="sep">|</span>
         <span>💳 Parcele em até 6x sem juros</span>
       </div>
-      <div class="track" aria-hidden="true">
-        <span>🕑 Loja 24 horas online</span><span class="sep">|</span>
-        <span>🚚 Envio para todo o Brasil</span><span class="sep">|</span>
-        <span>💳 Parcele em até 6x sem juros</span><span class="sep">|</span>
-        <span>🕑 Loja 24 horas online</span><span class="sep">|</span>
-        <span>🚚 Envio para todo o Brasil</span><span class="sep">|</span>
-        <span>💳 Parcele em até 6x sem juros</span><span class="sep">|</span>
-      </div>
     </div>
   </div>
 
   <header class="site">
     <div class="wrap hbar">
-      <button class="hamb" onclick="openDrawer('menu')" aria-label="Menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-      <a class="logo" href="/loja"><img src="/logo.png" alt="Brook'Saints Boutique"></a>
-
-      <form class="search" onsubmit="return doSearch(event)">
-        <input id="q" type="search" placeholder="Buscar produtos, jeans, conjuntos...">
-        <button class="go" type="submit" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
-      </form>
-
-      <div class="icons">
-        <button class="iconbtn msearchbtn" onclick="toggleMSearch()" aria-label="Buscar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <div class="left">
+        <button class="hamb" onclick="openDrawer('menu')" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </button>
+      </div>
+      <a class="logo" href="/loja"><img src="/logo.png" alt="Brook'Saints Boutique"></a>
+      <div class="icons">
         <button class="iconbtn acct" onclick="alert('Área do cliente em breve 💗')" aria-label="Minha conta">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
           <span>Conta</span>
@@ -338,9 +317,9 @@
       </div>
     </div>
 
-    <div class="msearch" id="msearch">
+    <div class="searchrow">
       <form class="search" onsubmit="return doSearch(event)">
-        <input id="q2" type="search" placeholder="Buscar produtos...">
+        <input id="q" type="search" placeholder="Buscar produtos, jeans, conjuntos...">
         <button class="go" type="submit" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
       </form>
     </div>
@@ -719,17 +698,15 @@ function closeTools(){ document.querySelectorAll('.tool').forEach(function(x){x.
 document.addEventListener('click',function(e){ if(!e.target.closest('.tool')) closeTools(); });
 
 /* ===================== BUSCA ===================== */
-function doSearch(e){ e.preventDefault(); var q=(document.getElementById('q').value||document.getElementById('q2').value||'').trim().toLowerCase();
+function doSearch(e){ e.preventDefault(); var el=document.getElementById('q'); var q=(el?el.value:'').trim().toLowerCase();
   if(!q){ verTodos('all'); return false; }
   var l=PRODUTOS.filter(function(p){return p.nome.toLowerCase().indexOf(q)>=0 || (p.cat||'').toLowerCase().indexOf(q)>=0;});
   catLabel='Resultados para "'+q+'"'; catFilter='__search__';
   document.getElementById('catit').textContent=catLabel;
   document.getElementById('catgrid').innerHTML = l.length ? l.map(cardHTML).join('') : '<div class="emptyblk">Nada encontrado para "'+q+'". Tente outra palavra 💗</div>';
-  document.getElementById('msearch').classList.remove('open');
   document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
   return false;
 }
-function toggleMSearch(){ document.getElementById('msearch').classList.toggle('open'); var i=document.getElementById('q2'); if(i) i.focus(); }
 
 /* ===================== DRAWERS / MENU ===================== */
 function openDrawer(id){ closeAll(); document.getElementById('ov').classList.add('open'); document.getElementById(id).classList.add('open'); if(id==='cart') renderCart(); if(id==='fav') renderFav(); }
