@@ -146,10 +146,15 @@
   .stripe{ background:var(--rose-soft); color:var(--rose-deep); text-align:center; padding:16px; border-radius:16px; margin:26px 0; font-weight:700; font-size:.95rem; }
 
   /* ===================== SEÇÕES / PRODUTOS ===================== */
-  section.blk{ margin:36px 0; }
+  section.blk{ margin:36px 0; scroll-margin-top:140px; }
+  #catalogo{ scroll-margin-top:130px; }
   .blk-head{ display:flex; flex-direction:column; align-items:center; gap:5px; margin-bottom:16px; text-align:center; }
-  .blk-head h2{ font-size:1.35rem; font-weight:800; letter-spacing:.3px; }
+  .blk-head h2{ font-size:1.5rem; font-weight:800; letter-spacing:.3px; }
+  .blk-head .sub2{ font-size:.85rem; color:var(--muted); }
   .blk-head .all{ font-size:.82rem; font-weight:700; color:var(--rose); white-space:nowrap; cursor:pointer; }
+  .morewrap{ display:flex; justify-content:center; margin-top:24px; }
+  .morebtn{ border:1.5px solid var(--rose); background:#fff; color:var(--rose); font-family:inherit; font-weight:800; font-size:.9rem; padding:13px 30px; border-radius:999px; cursor:pointer; }
+  .morebtn:hover{ background:var(--rose); color:#fff; }
   .blk-head .all:hover{ text-decoration:underline; }
 
   .products{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
@@ -325,7 +330,7 @@
     <nav class="main">
       <div class="wrap">
         <a href="#topo">Início</a>
-        <a href="#novidades">Novidades</a>
+        <a href="#colecao">Novidades</a>
         <div class="navitem">
           <button type="button">Roupas <span class="car">▾</span></button>
           <div class="dropdown">
@@ -345,7 +350,7 @@
           </div>
         </div>
         <a onclick="verCategoria('Conjunto')">Conjuntos</a>
-        <a href="#promocoes">Promoções</a>
+        <a onclick="verTodos('promo')">Promoções</a>
       </div>
     </nav>
   </header>
@@ -355,9 +360,9 @@
   <!-- ===================== HERO SLIDER ===================== -->
   <section class="hero">
     <div class="track2" id="track2">
-      <div class="slide2 on"><img src="/loja/fotos/wide-1.jpg" alt=""><div class="ov"><h2>Novidades em Jeans</h2><p>Conjuntos com muito brilho para arrasar</p><a class="cta" href="#novidades">Ver novidades</a></div></div>
-      <div class="slide2"><img src="/loja/fotos/conjunto-1.jpg" alt=""><div class="ov"><h2>Coleção Maliciosa</h2><p>Estilo Y2K com strass e patches exclusivos</p><a class="cta" href="#jeans">Comprar agora</a></div></div>
-      <div class="slide2"><img src="/loja/fotos/kitty-1.jpg" alt=""><div class="ov"><h2>Loja online 24h</h2><p>Compre quando quiser, envio para todo o Brasil</p><a class="cta" href="#maisvendidos">Confira</a></div></div>
+      <div class="slide2 on"><img src="/loja/fotos/wide-1.jpg" alt=""><div class="ov"><h2>Novidades em Jeans</h2><p>Conjuntos com muito brilho para arrasar</p><a class="cta" href="#colecao">Ver novidades</a></div></div>
+      <div class="slide2"><img src="/loja/fotos/conjunto-1.jpg" alt=""><div class="ov"><h2>Coleção Maliciosa</h2><p>Estilo Y2K com strass e patches exclusivos</p><a class="cta" href="#colecao">Comprar agora</a></div></div>
+      <div class="slide2"><img src="/loja/fotos/kitty-1.jpg" alt=""><div class="ov"><h2>Loja online 24h</h2><p>Compre quando quiser, envio para todo o Brasil</p><a class="cta" href="#colecao">Confira</a></div></div>
     </div>
     <button class="arw l" onclick="heroNav(-1)" aria-label="Anterior">‹</button>
     <button class="arw r" onclick="heroNav(1)" aria-label="Próxima">›</button>
@@ -367,37 +372,18 @@
   <div class="wrap">
     <!-- ===================== BANNERS ===================== -->
     <div class="banners">
-      <a class="banner" href="#jeans"><img src="/loja/fotos/wide-3.jpg" alt=""><div class="bt"><b>Jeans com muito brilho</b><span>Peças únicas com strass</span></div></a>
-      <a class="banner" href="#novidades"><img src="/loja/fotos/conjunto-3.jpg" alt=""><div class="bt"><b>Novidades toda semana</b><span>Fique por dentro dos lançamentos</span></div></a>
+      <a class="banner" href="#colecao"><img src="/loja/fotos/wide-3.jpg" alt=""><div class="bt"><b>Jeans com muito brilho</b><span>Peças únicas com strass</span></div></a>
+      <a class="banner" href="#colecao"><img src="/loja/fotos/conjunto-3.jpg" alt=""><div class="bt"><b>Novidades toda semana</b><span>Fique por dentro dos lançamentos</span></div></a>
     </div>
 
     <!-- ===================== SEÇÕES ===================== -->
-    <section class="blk" id="maisvendidos">
-      <div class="blk-head"><h2>Mais vendidos</h2><span class="all" onclick="verTodos('all')">Ver todos ›</span></div>
-      <div class="products" data-sec="mais"></div>
-    </section>
-
-    <section class="blk" id="novidades">
-      <div class="blk-head"><h2>Novidades</h2><span class="all" onclick="verTodos('all')">Ver todos ›</span></div>
-      <div class="products" data-sec="novidade"></div>
+    <section class="blk" id="colecao">
+      <div class="blk-head"><h2>Coleção Maliciosa</h2><span class="sub2">Jeans com muito brilho</span></div>
+      <div class="products" data-sec="colecao"></div>
+      <div class="morewrap"><button class="morebtn" onclick="verTodos('all')">Ver todos os produtos ›</button></div>
     </section>
 
     <div class="stripe">💳 Parcele em até 6x sem juros · 🚚 Enviamos para todo o Brasil</div>
-
-    <section class="blk" id="jeans">
-      <div class="blk-head"><h2>Jeans</h2><span class="all" onclick="verCategoria('Jeans')">Ver todos ›</span></div>
-      <div class="products" data-sec="jeans"></div>
-    </section>
-
-    <section class="blk" id="conjuntos">
-      <div class="blk-head"><h2>Conjuntos</h2><span class="all" onclick="verCategoria('Conjunto')">Ver todos ›</span></div>
-      <div class="products" data-sec="conjunto"></div>
-    </section>
-
-    <section class="blk" id="promocoes">
-      <div class="blk-head"><h2>Promoções</h2><span class="all" onclick="verTodos('promo')">Ver todos ›</span></div>
-      <div class="products" data-sec="promo"></div>
-    </section>
 
     <!-- ===================== CATÁLOGO ===================== -->
     <section class="blk" id="catalogo">
@@ -460,7 +446,7 @@
     <header><h3>Menu</h3><button class="x" onclick="closeAll()">&times;</button></header>
     <div class="dbody mnav">
       <a href="#topo" onclick="closeAll()">Início</a>
-      <a href="#novidades" onclick="closeAll()">Novidades</a>
+      <a href="#colecao" onclick="closeAll()">Novidades</a>
       <div class="acc">
         <button type="button" onclick="acc(this)">Roupas <span class="car">▾</span></button>
         <div class="sub">
@@ -480,7 +466,7 @@
         </div>
       </div>
       <a onclick="verCategoria('Conjunto')">Conjuntos</a>
-      <a href="#promocoes" onclick="closeAll()">Promoções</a>
+      <a onclick="verTodos('promo')">Promoções</a>
     </div>
   </aside>
 
@@ -579,11 +565,7 @@ function renderSec(sel, list){
   el.innerHTML = list.length ? list.map(cardHTML).join('') : '<div class="emptyblk">Em breve novidades nesta seção 💗</div>';
 }
 function renderHome(){
-  renderSec('mais', PRODUTOS.filter(function(p){return p.tags.indexOf('maisvendido')>=0;}));
-  renderSec('novidade', PRODUTOS.filter(function(p){return p.tags.indexOf('novidade')>=0;}));
-  renderSec('jeans', PRODUTOS.filter(function(p){return p.grupo.indexOf('Jeans')>=0;}));
-  renderSec('conjunto', PRODUTOS.filter(function(p){return p.grupo.indexOf('Conjunto')>=0;}));
-  renderSec('promo', PRODUTOS.filter(function(p){return p.tags.indexOf('promo')>=0;}));
+  renderSec('colecao', PRODUTOS);
 }
 
 /* ===================== FAVORITOS ===================== */
@@ -690,7 +672,7 @@ function verCategoria(cat){
   catFilter=cat; catLabel=label; buildFilterMenu(); renderCatalog(); closeAll();
   document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
 }
-function verTodos(v){ catFilter=v; catLabel=(v==='promo')?'Promoções':'Todos os produtos'; buildFilterMenu(); renderCatalog(); document.getElementById('catalogo').scrollIntoView({behavior:'smooth'}); }
+function verTodos(v){ closeAll(); catFilter=v; catLabel=(v==='promo')?'Promoções':'Todos os produtos'; buildFilterMenu(); renderCatalog(); document.getElementById('catalogo').scrollIntoView({behavior:'smooth'}); }
 function toggleTool(id){ var t=document.getElementById(id); document.querySelectorAll('.tool').forEach(function(x){ if(x!==t) x.classList.remove('open'); }); t.classList.toggle('open'); }
 function closeTools(){ document.querySelectorAll('.tool').forEach(function(x){x.classList.remove('open');}); }
 document.addEventListener('click',function(e){ if(!e.target.closest('.tool')) closeTools(); });
