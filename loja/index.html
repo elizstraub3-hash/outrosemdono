@@ -172,7 +172,9 @@
   .card .fav svg{ width:19px; height:19px; }
   .card .fav.on{ color:#fff; background:var(--rose); }
   .card .cbody{ padding:10px 11px 12px; display:flex; flex-direction:column; gap:5px; flex:1; }
+  .card .cod{ font-size:.62rem; font-weight:700; letter-spacing:.6px; color:var(--muted); }
   .card .nome{ font-size:.82rem; font-weight:600; line-height:1.28; color:var(--ink); min-height:2.1em; cursor:pointer; }
+  .card .consulta{ font-size:.95rem; font-weight:800; color:var(--rose-deep); }
   .card .preco{ display:flex; align-items:baseline; gap:6px; flex-wrap:wrap; }
   .card .preco b{ font-size:1.02rem; font-weight:800; color:var(--rose-deep); }
   .card .preco .de{ font-size:.75rem; color:var(--muted); text-decoration:line-through; }
@@ -380,6 +382,11 @@
     <section class="blk" id="colecao">
       <div class="blk-head"><h2>Coleção Maliciosa</h2><span class="sub2">Jeans com muito brilho</span></div>
       <div class="products" data-sec="colecao"></div>
+    </section>
+
+    <section class="blk" id="conjuntos-sec">
+      <div class="blk-head"><h2>Conjuntos</h2><span class="sub2">Looks completos para arrasar</span></div>
+      <div class="products" data-sec="conjuntos"></div>
       <div class="morewrap"><button class="morebtn" onclick="verTodos('all')">Ver todos os produtos ›</button></div>
     </section>
 
@@ -517,24 +524,46 @@
 <script>
 /* ===================== DADOS ===================== */
 var PRODUTOS = [
-  { id:'p1', nome:"Conjunto Calça Jeans Hello Kitty + Body Vermelho", preco:199.90, cat:'Reta', grupo:['Jeans','Conjunto'], tags:['maisvendido'], tamanhos:['38'],
+  // ===== Coleção Maliciosa (jeans / strass) =====
+  { id:'p1', cod:'BS-001', linha:'maliciosa', nome:"Conjunto Calça Jeans Hello Kitty + Body Vermelho", preco:199.90, cat:'Reta', grupo:['Jeans','Conjunto'], tags:['maisvendido'], tamanhos:['38'],
     fotos:['/loja/fotos/kitty-1.jpg','/loja/fotos/kitty-2.jpg'] },
-  { id:'p2', nome:"Conjunto Calça Jeans Wide Leg + Top Strass", preco:219.90, precoDe:259.90, cat:'Wide Leg', grupo:['Jeans','Conjunto'], tags:['novidade','promo'], tamanhos:['38'],
+  { id:'p2', cod:'BS-002', linha:'maliciosa', nome:"Conjunto Calça Jeans Wide Leg + Top Strass", preco:219.90, precoDe:259.90, cat:'Wide Leg', grupo:['Jeans','Conjunto'], tags:['novidade','promo'], tamanhos:['38'],
     fotos:['/loja/fotos/wide-1.jpg','/loja/fotos/wide-2.jpg','/loja/fotos/wide-3.jpg'] },
-  { id:'p3', nome:"Conjunto Calça Cargo Jeans + Body Rosa Bebê", preco:199.90, cat:'Cargo', grupo:['Jeans','Conjunto'], tags:['novidade','maisvendido'], tamanhos:['38'],
+  { id:'p3', cod:'BS-003', linha:'maliciosa', nome:"Conjunto Calça Cargo Jeans + Body Rosa Bebê", preco:199.90, cat:'Cargo', grupo:['Jeans','Conjunto'], tags:['novidade','maisvendido'], tamanhos:['38'],
     fotos:['/loja/fotos/cargo-1.jpg','/loja/fotos/cargo-2.jpg'] },
-  { id:'p4', nome:"Conjunto Jeans (jaqueta cropped + calça cargo)", preco:249.90, cat:'Cargo', grupo:['Jeans','Conjunto'], tags:['maisvendido'], tamanhos:['38'],
+  { id:'p4', cod:'BS-004', linha:'maliciosa', nome:"Conjunto Jeans (jaqueta cropped + calça cargo)", preco:249.90, cat:'Cargo', grupo:['Jeans','Conjunto'], tags:['maisvendido'], tamanhos:['38'],
     fotos:['/loja/fotos/conjunto-1.jpg','/loja/fotos/conjunto-2.jpg','/loja/fotos/conjunto-3.jpg','/loja/fotos/conjunto-4.jpg'] },
-  { id:'p5', nome:"Conjunto Listrado Branco (corset + calça jogger)", preco:189.90, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['38'],
+  { id:'p5', cod:'BS-005', linha:'maliciosa', nome:"Conjunto Listrado Branco (corset + calça jogger)", preco:189.90, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['38'],
     fotos:['/loja/fotos/listrado-1.jpg','/loja/fotos/listrado-2.jpg','/loja/fotos/listrado-3.jpg'] },
-  { id:'p6', nome:"Conjunto Saia Jeans Maliciosa (top + saia)", preco:199.90, cat:'Saia', grupo:['Jeans','Conjunto'], tags:['novidade'], tamanhos:['38'],
+  { id:'p6', cod:'BS-006', linha:'maliciosa', nome:"Conjunto Saia Jeans Maliciosa (top + saia)", preco:199.90, cat:'Saia', grupo:['Jeans','Conjunto'], tags:['novidade'], tamanhos:['38'],
     fotos:['/loja/fotos/maliciosa-saia-1.jpg','/loja/fotos/maliciosa-saia-2.jpg'] },
-  { id:'p7', nome:"Conjunto Saia Jeans Black Strass (corset + saia)", preco:209.90, cat:'Saia', grupo:['Jeans','Conjunto'], tags:['novidade'], tamanhos:['38'],
+  { id:'p7', cod:'BS-007', linha:'maliciosa', nome:"Conjunto Saia Jeans Black Strass (corset + saia)", preco:209.90, cat:'Saia', grupo:['Jeans','Conjunto'], tags:['novidade'], tamanhos:['38'],
     fotos:['/loja/fotos/blackstrass-1.jpg','/loja/fotos/blackstrass-2.jpg'] },
-  { id:'p8', nome:"Conjunto Saia Jeans Laço Rosa (corset + saia)", preco:199.90, cat:'Saia', grupo:['Jeans','Conjunto'], tags:['novidade'], tamanhos:['38'],
+  { id:'p8', cod:'BS-008', linha:'maliciosa', nome:"Conjunto Saia Jeans Laço Rosa (corset + saia)", preco:199.90, cat:'Saia', grupo:['Jeans','Conjunto'], tags:['novidade'], tamanhos:['38'],
     fotos:['/loja/fotos/laco-1.jpg'] },
-  { id:'p9', nome:"Calça Jeans Cargo Black Strass", preco:229.90, cat:'Cargo', grupo:['Jeans'], tags:['novidade'], tamanhos:['38'],
+  { id:'p9', cod:'BS-009', linha:'maliciosa', nome:"Calça Jeans Cargo Black Strass", preco:229.90, cat:'Cargo', grupo:['Jeans'], tags:['novidade'], tamanhos:['38'],
     fotos:['/loja/fotos/cargoblack-1.jpg','/loja/fotos/cargoblack-2.jpg','/loja/fotos/cargoblack-3.jpg'] },
+  // ===== Conjuntos (preço a definir — troque preco:null pelo valor, ex.: preco:189.90) =====
+  { id:'p10', cod:'BS-010', linha:'conjuntos', nome:"Conjunto Corset Off-White + Calça Jogger", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-offwhite-1.jpg','/loja/fotos/cj-offwhite-2.jpg','/loja/fotos/cj-offwhite-3.jpg'] },
+  { id:'p11', cod:'BS-011', linha:'conjuntos', nome:"Conjunto Poá Rosa (top + calça pantalona)", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-poarosa-1.jpg','/loja/fotos/cj-poarosa-2.jpg','/loja/fotos/cj-poarosa-3.jpg'] },
+  { id:'p12', cod:'BS-012', linha:'conjuntos', nome:"Conjunto Amarelo (top + calça pantalona)", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-amarelo-1.jpg','/loja/fotos/cj-amarelo-2.jpg','/loja/fotos/cj-amarelo-3.jpg'] },
+  { id:'p13', cod:'BS-013', linha:'conjuntos', nome:"Conjunto Poá Off-White (corset + jogger)", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-poaoff-1.jpg','/loja/fotos/cj-poaoff-2.jpg','/loja/fotos/cj-poaoff-3.jpg'] },
+  { id:'p14', cod:'BS-014', linha:'conjuntos', nome:"Conjunto Branco Plissado (corset + calça)", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-branco-1.jpg','/loja/fotos/cj-branco-2.jpg','/loja/fotos/cj-branco-3.jpg'] },
+  { id:'p15', cod:'BS-015', linha:'conjuntos', nome:"Conjunto Bege Poá (corset + jogger)", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-bege-1.jpg','/loja/fotos/cj-bege-2.jpg','/loja/fotos/cj-bege-3.jpg'] },
+  { id:'p16', cod:'BS-016', linha:'conjuntos', nome:"Conjunto Rosa (top + calça pantalona)", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-rosa-1.jpg','/loja/fotos/cj-rosa-2.jpg','/loja/fotos/cj-rosa-3.jpg'] },
+  { id:'p17', cod:'BS-017', linha:'conjuntos', nome:"Conjunto Tie-Dye Lilás (top + saia)", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-tiedye-1.jpg','/loja/fotos/cj-tiedye-2.jpg','/loja/fotos/cj-tiedye-3.jpg'] },
+  { id:'p18', cod:'BS-018', linha:'conjuntos', nome:"Conjunto Azul (top + calça pantalona)", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-azul-1.jpg','/loja/fotos/cj-azul-2.jpg','/loja/fotos/cj-azul-3.jpg'] },
+  { id:'p19', cod:'BS-019', linha:'conjuntos', nome:"Conjunto Rosa Claro (top + calça pantalona)", preco:null, cat:'Conjunto', grupo:['Conjunto'], tags:['novidade'], tamanhos:['P','M','G'],
+    fotos:['/loja/fotos/cj-rosaclaro-1.jpg','/loja/fotos/cj-rosaclaro-2.jpg','/loja/fotos/cj-rosaclaro-3.jpg'] },
 ];
 var WHATS='5541998894516';
 
@@ -555,17 +584,19 @@ function sizeOfKey(k){ var s=k.split('|'); return s.length>1?s[1]:''; }
 /* ===================== CARD ===================== */
 function cardHTML(p){
   var promo = p.precoDe ? '<span class="tag promo">Oferta</span>' : (p.tags.indexOf('novidade')>=0 ? '<span class="tag">Novo</span>' : '');
-  var de = p.precoDe ? '<span class="de">'+money(p.precoDe)+'</span>' : '';
   var favon = fav[p.id] ? ' on' : '';
+  var precoBlock = p.preco
+    ? '<div class="preco"><b>'+money(p.preco)+'</b> '+(p.precoDe?'<span class="de">'+money(p.precoDe)+'</span>':'')+'</div><div class="parc">'+parcela(p.preco)+'</div>'
+    : '<div class="consulta">Sob consulta</div><div class="parc">Preço pelo WhatsApp</div>';
   return '<div class="card">'+
     '<div class="ph" onclick="openQv(\''+p.id+'\')">'+promo+
       '<button class="fav'+favon+'" onclick="event.stopPropagation();toggleFav(\''+p.id+'\',this)" aria-label="Favoritar"><svg viewBox="0 0 24 24" fill="'+(fav[p.id]?'currentColor':'none')+'" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C5 15.5 3 12 3 8.6A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 9 2.6C21 12 19 15.5 12 21z"/></svg></button>'+
       '<img src="'+p.fotos[0]+'" alt="'+p.nome+'" loading="lazy">'+
     '</div>'+
     '<div class="cbody">'+
+      '<div class="cod">Cód: '+p.cod+'</div>'+
       '<div class="nome" onclick="openQv(\''+p.id+'\')">'+p.nome+'</div>'+
-      '<div class="preco"><b>'+money(p.preco)+'</b> '+de+'</div>'+
-      '<div class="parc">'+parcela(p.preco)+'</div>'+
+      precoBlock+
       '<button class="buy" onclick="openQv(\''+p.id+'\')">Comprar</button>'+
     '</div></div>';
 }
@@ -575,7 +606,8 @@ function renderSec(sel, list){
   el.innerHTML = list.length ? list.map(cardHTML).join('') : '<div class="emptyblk">Em breve novidades nesta seção 💗</div>';
 }
 function renderHome(){
-  renderSec('colecao', PRODUTOS);
+  renderSec('colecao', PRODUTOS.filter(function(p){return p.linha==='maliciosa';}));
+  renderSec('conjuntos', PRODUTOS.filter(function(p){return p.linha==='conjuntos';}));
 }
 
 /* ===================== FAVORITOS ===================== */
@@ -601,8 +633,8 @@ function openQv(id){
   var p=prodById(id); if(!p) return;
   qvId=id; qvIdx=0; qvSize=(p.tamanhos&&p.tamanhos[0])||'';
   document.getElementById('qvnome').textContent=p.nome;
-  document.getElementById('qvpreco').innerHTML='<b>'+money(p.preco)+'</b>'+(p.precoDe?'<span class="de">'+money(p.precoDe)+'</span>':'');
-  document.getElementById('qvparc').textContent=parcela(p.preco)+' · '+money(p.preco)+' no Pix';
+  document.getElementById('qvpreco').innerHTML = p.preco ? '<b>'+money(p.preco)+'</b>'+(p.precoDe?'<span class="de">'+money(p.precoDe)+'</span>':'') : '<b>Sob consulta</b>';
+  document.getElementById('qvparc').textContent = 'Cód: '+p.cod + (p.preco ? ' · '+parcela(p.preco)+' · '+money(p.preco)+' no Pix' : ' · Consulte o preço pelo WhatsApp');
   document.getElementById('qvsizes').innerHTML=(p.tamanhos||[]).map(function(t,i){return '<button class="'+(i===0?'on':'')+'" onclick="qvSel(this,\''+t+'\')">'+t+'</button>';}).join('');
   renderQvGal();
   document.getElementById('qv').classList.add('open');
@@ -621,7 +653,7 @@ function qvAdd(){ addCart(qvId, qvSize); closeQv(); openDrawer('cart'); }
 function addCart(id,size){ var k=size?id+'|'+size:id; cart[k]=(cart[k]||0)+1; saveCart(); updateBadges(); renderCart(); }
 function chg(k,d){ if(d===-999){delete cart[k];} else { cart[k]=(cart[k]||0)+d; if(cart[k]<=0) delete cart[k]; } saveCart(); updateBadges(); renderCart(); }
 function cartCount(){ var n=0; for(var k in cart) n+=cart[k]; return n; }
-function cartTotal(){ var t=0; for(var k in cart){ var p=prodByKey(k); if(p) t+=p.preco*cart[k]; } return t; }
+function cartTotal(){ var t=0; for(var k in cart){ var p=prodByKey(k); if(p && p.preco) t+=p.preco*cart[k]; } return t; }
 function selFrete(r){ frete=r.value; document.querySelectorAll('.cfoot .opt').forEach(function(o){o.classList.remove('sel');}); r.closest('.opt').classList.add('sel'); }
 function renderCart(){
   var box=document.getElementById('cartbody');
@@ -629,8 +661,8 @@ function renderCart(){
   if(!keys.length){ box.innerHTML='<div class="empty">Seu carrinho está vazio.<br>Adicione suas peças favoritas 💗</div>'; }
   else{
     box.innerHTML=keys.map(function(k){ var p=prodByKey(k), sz=sizeOfKey(k);
-      return '<div class="citem"><img src="'+p.fotos[0]+'" alt=""><div class="d"><div class="n">'+p.nome+'</div><div class="p">'+money(p.preco)+' <small style="color:var(--muted)">no Pix</small></div>'+
-        (sz?'<div class="tm">Tamanho: '+sz+'</div>':'')+
+      return '<div class="citem"><img src="'+p.fotos[0]+'" alt=""><div class="d"><div class="n">'+p.nome+'</div><div class="p">'+(p.preco?money(p.preco)+' <small style="color:var(--muted)">no Pix</small>':'A combinar')+'</div>'+
+        '<div class="tm">Cód: '+p.cod+(sz?' · Tam: '+sz:'')+'</div>'+
         '<div class="qty"><button onclick="chg(\''+k+'\',-1)">–</button><span>'+cart[k]+'</span><button onclick="chg(\''+k+'\',1)">+</button><button class="rm" onclick="chg(\''+k+'\',-999)">remover</button></div></div></div>';
     }).join('');
   }
@@ -640,8 +672,8 @@ function renderCart(){
 function finalizar(){
   var keys=Object.keys(cart).filter(function(k){return cart[k]>0 && prodByKey(k);});
   if(!keys.length) return;
-  var linhas=keys.map(function(k){ var p=prodByKey(k), sz=sizeOfKey(k); return '• '+cart[k]+'x '+p.nome+(sz?' (Tam '+sz+')':'')+' — '+money(p.preco*cart[k]); });
-  var msg='Olá, Brook\'Saints! Quero fazer um pedido:\n\n'+linhas.join('\n')+'\n\nTotal: '+money(cartTotal())+' (no Pix)\nEntrega: '+frete;
+  var linhas=keys.map(function(k){ var p=prodByKey(k), sz=sizeOfKey(k); var val=p.preco?money(p.preco*cart[k]):'a combinar'; return '• '+cart[k]+'x '+p.nome+' ['+p.cod+']'+(sz?' (Tam '+sz+')':'')+' — '+val; });
+  var msg='Olá, Brook\'Saints! Quero fazer um pedido:\n\n'+linhas.join('\n')+'\n\nTotal: '+money(cartTotal())+' (no Pix, itens com preço)\nEntrega: '+frete;
   window.open('https://wa.me/'+WHATS+'?text='+encodeURIComponent(msg),'_blank');
 }
 
