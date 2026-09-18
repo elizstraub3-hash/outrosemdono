@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brook'Saints Boutique · Loja Online</title>
-<meta name="description" content="Brook'Saints Boutique — moda feminina online 24h. Jeans, conjuntos e novidades com envio para todo o Brasil e parcelamento em até 6x sem juros.">
+<meta name="description" content="Brook'Saints Boutique — moda feminina online 24h. Jeans, conjuntos e novidades com envio para todo o Brasil com Pix, dinheiro ou cartão.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -252,6 +252,8 @@
   .cfoot .fin{ width:100%; border:none; cursor:pointer; background:var(--ok); color:#fff; font-weight:800; font-size:1rem; padding:14px; border-radius:12px; display:flex; align-items:center; justify-content:center; gap:10px; }
   .cfoot .fin:disabled{ opacity:.5; cursor:not-allowed; }
   .cfoot .fin svg{ width:20px; height:20px; }
+  .cfoot .payinfo{ font-size:.72rem; color:var(--muted); line-height:1.5; margin:2px 0 12px; text-align:center; }
+  .cfoot .payinfo b{ color:var(--rose-deep); }
 
   /* quick view */
   .qv{ position:fixed; inset:0; z-index:82; display:none; align-items:center; justify-content:center; padding:16px; background:rgba(40,12,26,.55); backdrop-filter:blur(3px); }
@@ -291,8 +293,8 @@
   <!-- ===================== HEADER ===================== -->
   <div class="topbar">
     <div class="marquee">
-      <span class="grp"><span>🕑 Loja 24 horas online</span><span class="sep">|</span><span>🚚 Envio para todo o Brasil</span><span class="sep">|</span><span>💳 Parcele em até 6x sem juros</span><span class="sep">|</span></span>
-      <span class="grp"><span>🕑 Loja 24 horas online</span><span class="sep">|</span><span>🚚 Envio para todo o Brasil</span><span class="sep">|</span><span>💳 Parcele em até 6x sem juros</span><span class="sep">|</span></span>
+      <span class="grp"><span>🕑 Loja 24 horas online</span><span class="sep">|</span><span>🚚 Envio para todo o Brasil</span><span class="sep">|</span><span>💳 Pix, dinheiro ou cartão</span><span class="sep">|</span></span>
+      <span class="grp"><span>🕑 Loja 24 horas online</span><span class="sep">|</span><span>🚚 Envio para todo o Brasil</span><span class="sep">|</span><span>💳 Pix, dinheiro ou cartão</span><span class="sep">|</span></span>
     </div>
   </div>
 
@@ -390,7 +392,7 @@
       <div class="morewrap"><button class="morebtn" onclick="verTodos('all')">Ver todos os produtos ›</button></div>
     </section>
 
-    <div class="stripe">💳 Parcele em até 6x sem juros · 🚚 Enviamos para todo o Brasil</div>
+    <div class="stripe">💳 Pix · Dinheiro · Cartão (com taxa) &nbsp;·&nbsp; 🚚 Enviamos para todo o Brasil</div>
 
     <!-- ===================== CATÁLOGO ===================== -->
     <section class="blk" id="catalogo">
@@ -437,7 +439,8 @@
         <p>Seg a Sáb · 9h às 18h</p>
         <p>WhatsApp (41) 9 9889-4516</p>
         <h4 style="margin-top:16px">Formas de pagamento</h4>
-        <div class="pays"><span>PIX</span><span>CARTÃO</span><span>6x SEM JUROS</span></div>
+        <div class="pays"><span>PIX</span><span>DINHEIRO</span><span>CARTÃO (c/ taxa)</span></div>
+        <p style="margin-top:8px">Pedidos liberados somente após a confirmação do pagamento.</p>
         <h4 style="margin-top:16px">Envio</h4>
         <p>Para todo o Brasil · Retirada na loja</p>
       </div>
@@ -492,6 +495,10 @@
       <div class="opt"><input type="radio" name="frete" value="Envio para todo o Brasil (a combinar)" onchange="selFrete(this)"> Envio (a combinar)</div>
       <div class="opt"><input type="radio" name="frete" value="Entrega via Uber (a combinar)" onchange="selFrete(this)"> Entrega via Uber</div>
       <div class="tot"><span>Total <small style="color:var(--muted);font-weight:600">no Pix</small></span><b id="carttotal">R$ 0,00</b></div>
+      <div class="payinfo">
+        <b>Formas de pagamento:</b> Pix · Dinheiro · Cartão (com taxa — consulte).<br>
+        Pedidos liberados somente após a confirmação do pagamento.
+      </div>
       <button class="fin" id="fin" onclick="finalizar()" disabled>
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.16-1.32A10 10 0 1 0 12 2z"/></svg>
         Finalizar no WhatsApp
@@ -586,7 +593,7 @@ function cardHTML(p){
   var promo = p.precoDe ? '<span class="tag promo">Oferta</span>' : (p.tags.indexOf('novidade')>=0 ? '<span class="tag">Novo</span>' : '');
   var favon = fav[p.id] ? ' on' : '';
   var precoBlock = p.preco
-    ? '<div class="preco"><b>'+money(p.preco)+'</b> '+(p.precoDe?'<span class="de">'+money(p.precoDe)+'</span>':'')+'</div><div class="parc">'+parcela(p.preco)+'</div>'
+    ? '<div class="preco"><b>'+money(p.preco)+'</b> '+(p.precoDe?'<span class="de">'+money(p.precoDe)+'</span>':'')+'</div><div class="parc">Pix, dinheiro ou cartão (c/ taxa)</div>'
     : '<div class="consulta">Sob consulta</div><div class="parc">Preço pelo WhatsApp</div>';
   return '<div class="card">'+
     '<div class="ph" onclick="openQv(\''+p.id+'\')">'+promo+
@@ -634,7 +641,7 @@ function openQv(id){
   qvId=id; qvIdx=0; qvSize=(p.tamanhos&&p.tamanhos[0])||'';
   document.getElementById('qvnome').textContent=p.nome;
   document.getElementById('qvpreco').innerHTML = p.preco ? '<b>'+money(p.preco)+'</b>'+(p.precoDe?'<span class="de">'+money(p.precoDe)+'</span>':'') : '<b>Sob consulta</b>';
-  document.getElementById('qvparc').textContent = 'Cód: '+p.cod + (p.preco ? ' · '+parcela(p.preco)+' · '+money(p.preco)+' no Pix' : ' · Consulte o preço pelo WhatsApp');
+  document.getElementById('qvparc').textContent = 'Cód: '+p.cod + (p.preco ? ' · Pix, dinheiro ou cartão (c/ taxa) · '+money(p.preco)+' no Pix' : ' · Consulte o preço pelo WhatsApp');
   document.getElementById('qvsizes').innerHTML=(p.tamanhos||[]).map(function(t,i){return '<button class="'+(i===0?'on':'')+'" onclick="qvSel(this,\''+t+'\')">'+t+'</button>';}).join('');
   renderQvGal();
   document.getElementById('qv').classList.add('open');
